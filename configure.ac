@@ -34,9 +34,9 @@ AC_PROG_INSTALL
 AC_PROG_LN_S
 AC_PROG_MAKE_SET
 # AC_PROG_RANLIB
+AC_PROG_MKDIR_P
 
 # Checks for libraries.
-AC_CHECK_LIB([xxx], [hello_xxx])
 
 # Checks for header files.
 
@@ -47,5 +47,7 @@ AC_CHECK_LIB([xxx], [hello_xxx])
 AC_CONFIG_FILES([Makefile
                  example/Makefile
                  include/Makefile
-                 src/Makefile])
+                 include/sub_include/Makefile
+                 src/Makefile
+                 src/sub_src/Makefile])
 AC_OUTPUT

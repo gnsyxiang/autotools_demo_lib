@@ -18,6 +18,9 @@
 #     last modified: 05/03 2021 10:35
 # ===============================================================
 
+SUBDIRS = \
+		  sub_src
+
 lib_LTLIBRARIES = libxxx.la
 
 SOURCES_COM = \
@@ -32,7 +35,9 @@ CFLAGS_COM = \
 			 $(AM_CFLAGS_COM) \
 			 $(INCLUDE_COM)
 
-LIBADD_COM =
+LIBADD_COM = \
+			 $(top_builddir)/src/sub_src/libaaa.la
+
 LDFLAGS_COM = \
 			  -version-info @current@:@revision@:@age@ \
 			  -rdynamic

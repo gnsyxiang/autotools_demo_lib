@@ -18,10 +18,13 @@
 #     last modified: 05/03 2021 10:35
 # ===============================================================
 
+SUBDIRS = \
+		  sub_include
+
 HEADERS_COM = \
 			  xxx.h
 
-install_includedir 		= $(includedir)/@project_name@
+install_includedir 	= $(includedir)/@project_name@
 
 noinst_HEADERS  		=
 install_include_HEADERS = $(HEADERS_COM)
