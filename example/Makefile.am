@@ -26,6 +26,7 @@ LDADD_COM = \
 			-lxxx
 
 LDFLAGS_COM = \
+			  -Wl,--gc-sections \
 			  -L$(top_builddir)/src/.libs
 
 bin_PROGRAMS 	=

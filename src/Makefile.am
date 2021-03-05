@@ -33,6 +33,8 @@ CFLAGS_COM = \
 			 $(INCLUDE_COM) \
 			 $(NO_ERROR_COM) \
 			 $(AM_CFLAGS_COM) \
+			 -ffunction-sections \
+			 -fdata-sections \
 			 -fPIC
 
 LIBADD_COM =
