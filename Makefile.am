@@ -20,11 +20,15 @@
 
 ACLOCAL_AMFLAGS = -I m4
 
+NO_ERROR_COM = \
+			   -Wno-error=unused-result \
+			   -Wno-unused-parameter \
+			   -Wno-error=unused-but-set-variable
+
 AM_CFLAGS_COM = \
-				$(ACLOCAL_AMFLAGS) \
 				-pipe -W -Wall -Werror \
-				-Wno-error=unused-result \
-				-Wno-unused-parameter
+				$(NO_ERROR_COM) \
+				$(ACLOCAL_AMFLAGS)
 export AM_CFLAGS_COM
 
 dist_doc_DATA = \

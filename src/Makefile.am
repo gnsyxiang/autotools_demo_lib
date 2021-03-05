@@ -26,16 +26,11 @@ SOURCES_COM = \
 INCLUDE_COM = \
 			  -I$(top_srcdir)/include
 
-NO_ERROR_COM = \
-			   -Wno-error=unused-but-set-variable
-
 CFLAGS_COM = \
-			 $(INCLUDE_COM) \
-			 $(NO_ERROR_COM) \
-			 $(AM_CFLAGS_COM) \
 			 -ffunction-sections \
 			 -fdata-sections \
-			 -fPIC
+			 $(AM_CFLAGS_COM) \
+			 $(INCLUDE_COM)
 
 LIBADD_COM =
 LDFLAGS_COM = \

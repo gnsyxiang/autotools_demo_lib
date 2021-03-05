@@ -18,9 +18,12 @@
 #     last modified: 05/03 2021 10:38
 # ===============================================================
 
+INCLUDE_COM = \
+			  -I$(top_srcdir)/include
+
 CFLAGS_COM = \
-			 -I$(top_srcdir)/include \
-			 $(AM_CFLAGS_COM) 
+			 $(AM_CFLAGS_COM) \
+			 $(INCLUDE_COM)
 
 LDADD_COM = \
 			-lxxx
