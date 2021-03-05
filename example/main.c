@@ -20,12 +20,15 @@
 #include <stdio.h>
 
 #include "xxx.h"
+#include "sub_include/aaa.h"
 
 int main(int argc, char const* argv[])
 {
     printf("hello world \n");
 
     hello_xxx();
+
+    hello_aaa();
 
     return 0;
 }

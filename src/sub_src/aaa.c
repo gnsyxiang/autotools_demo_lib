@@ -2,10 +2,10 @@
  * 
  * Release under GPLv-3.0.
  * 
- * @file    xxx.c
+ * @file    aaa.c
  * @brief   
  * @author  gnsyxiang <gnsyxiang@163.com>
- * @date    05/03 2021 10:46
+ * @date    05/03 2021 17:10
  * @version v0.0.1
  * 
  * @since    note
@@ -15,16 +15,18 @@
  *     NO.     Author              Date            Modified
  *     00      zhenquan.qiu        05/03 2021      create the file
  * 
- *     last modified: 05/03 2021 10:46
+ *     last modified: 05/03 2021 17:10
  */
 #include <stdio.h>
 
-#include "xxx.h"
 #include "sub_include/aaa.h"
 
-void hello_xxx(void)
+void hello_aaa(void)
 {
-    printf("hello xxx \n");
+    printf("hello aaa\n");
+}
 
-    hello_aaa_1();
+void hello_aaa_1(void)
+{
+    printf("hello aaa_1\n");
 }
