@@ -39,8 +39,9 @@ LIBADD_COM = \
 			 $(top_builddir)/src/sub_src/libmodule_b.la
 
 LDFLAGS_COM = \
-			  -version-info @current@:@revision@:@age@ \
-			  -rdynamic
+			  -export-symbols-regex 'Hy*' \
+			  -rdynamic \
+			  -version-info @current@:@revision@:@age@
 
 AM_CFLAGS 					= $(CFLAGS_COM)
 libmodule_a_la_SOURCES  	= $(SOURCES_COM)
