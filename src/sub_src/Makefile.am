@@ -18,10 +18,10 @@
 #     last modified: 05/03 2021 17:09
 # ===============================================================
 
-noinst_LTLIBRARIES = libaaa.la
+noinst_LTLIBRARIES = libmodule_b.la
 
 SOURCES_COM = \
-			  aaa.c
+			  module_b.c
 
 INCLUDE_COM = \
 			  -I$(top_srcdir)/include
@@ -37,7 +37,7 @@ LIBADD_COM =
 LDFLAGS_COM = \
 			  -rdynamic
 
-AM_CFLAGS 			= $(CFLAGS_COM)
-libaaa_la_SOURCES  	= $(SOURCES_COM)
-libaaa_la_LIBADD   	= $(LIBADD_COM)
-libaaa_la_LDFLAGS  	= $(LDFLAGS_COM)
+AM_CFLAGS 				= $(CFLAGS_COM)
+libmodule_b_la_SOURCES  = $(SOURCES_COM)
+libmodule_b_la_LIBADD   = $(LIBADD_COM)
+libmodule_b_la_LDFLAGS  = $(LDFLAGS_COM)

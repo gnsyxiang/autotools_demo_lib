@@ -1,11 +1,11 @@
 /**
- *
+ * 
  * Release under GPLv-3.0.
  * 
- * @file    xxx.h
+ * @file    aaa.c
  * @brief   
  * @author  gnsyxiang <gnsyxiang@163.com>
- * @date    05/03 2021 10:46
+ * @date    05/03 2021 17:10
  * @version v0.0.1
  * 
  * @since    note
@@ -15,20 +15,18 @@
  *     NO.     Author              Date            Modified
  *     00      zhenquan.qiu        05/03 2021      create the file
  * 
- *     last modified: 05/03 2021 10:46
+ *     last modified: 05/03 2021 17:10
  */
-#ifndef __AUTOTOOLS_DEMO_INCLUDE_XXX_H_
-#define __AUTOTOOLS_DEMO_INCLUDE_XXX_H_
+#include <stdio.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+#include "sub_include/module_b.h"
 
-void hello_xxx(void);
-
-#ifdef __cplusplus
+void HyModuleBInit(void)
+{
+    printf("module b init successful \n");
 }
-#endif
 
-#endif
-
+void module_b_func(void)
+{
+    printf("module b func \n");
+}

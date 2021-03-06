@@ -2,7 +2,7 @@
  * 
  * Release under GPLv-3.0.
  * 
- * @file    xxx.c
+ * @file    module_a.c
  * @brief   
  * @author  gnsyxiang <gnsyxiang@163.com>
  * @date    05/03 2021 10:46
@@ -19,12 +19,12 @@
  */
 #include <stdio.h>
 
-#include "xxx.h"
-#include "sub_include/aaa.h"
+#include "module_a.h"
+#include "sub_include/module_b.h"
 
-void hello_xxx(void)
+void HyModuleAInit(void)
 {
-    printf("hello xxx \n");
+    module_b_func();
 
-    hello_aaa_1();
+    printf("module a init successful \n");
 }

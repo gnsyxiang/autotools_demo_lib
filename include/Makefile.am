@@ -22,7 +22,7 @@ SUBDIRS = \
 		  sub_include
 
 HEADERS_COM = \
-			  xxx.h
+			  module_a.h
 
 install_includedir 	= $(includedir)/@project_name@
 

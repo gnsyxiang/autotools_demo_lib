@@ -19,7 +19,7 @@
 # ===============================================================
 
 HEADERS_COM = \
-			  aaa.h
+			  module_b.h
 
 install_includedir 	= $(includedir)/@project_name@/sub_include
 

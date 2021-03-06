@@ -21,10 +21,10 @@
 SUBDIRS = \
 		  sub_src
 
-lib_LTLIBRARIES = libxxx.la
+lib_LTLIBRARIES = libmodule_a.la
 
 SOURCES_COM = \
-			  xxx.c
+			  module_a.c
 
 INCLUDE_COM = \
 			  -I$(top_srcdir)/include
@@ -36,13 +36,13 @@ CFLAGS_COM = \
 			 $(INCLUDE_COM)
 
 LIBADD_COM = \
-			 $(top_builddir)/src/sub_src/libaaa.la
+			 $(top_builddir)/src/sub_src/libmodule_b.la
 
 LDFLAGS_COM = \
 			  -version-info @current@:@revision@:@age@ \
 			  -rdynamic
 
-AM_CFLAGS 			= $(CFLAGS_COM)
-libxxx_la_SOURCES  	= $(SOURCES_COM)
-libxxx_la_LIBADD   	= $(LIBADD_COM)
-libxxx_la_LDFLAGS  	= $(LDFLAGS_COM)
+AM_CFLAGS 					= $(CFLAGS_COM)
+libmodule_a_la_SOURCES  	= $(SOURCES_COM)
+libmodule_a_la_LIBADD   	= $(LIBADD_COM)
+libmodule_a_la_LDFLAGS  	= $(LDFLAGS_COM)

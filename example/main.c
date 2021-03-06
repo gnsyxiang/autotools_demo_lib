@@ -19,16 +19,15 @@
  */
 #include <stdio.h>
 
-#include "xxx.h"
-#include "sub_include/aaa.h"
+#include "module_a.h"
+#include "sub_include/module_b.h"
 
 int main(int argc, char const* argv[])
 {
     printf("hello world \n");
 
-    hello_xxx();
-
-    hello_aaa();
+    HyModuleAInit();
+    HyModuleBInit();
 
     return 0;
 }
