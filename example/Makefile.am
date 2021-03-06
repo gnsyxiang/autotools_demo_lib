@@ -26,7 +26,7 @@ CFLAGS_COM = \
 			 $(INCLUDE_COM)
 
 LDADD_COM = \
-			$(top_builddir)/src/libmodule_a.la
+			$(top_builddir)/src/lib@project_name@.la
 
 LDFLAGS_COM = \
 			  -Wl,--gc-sections
