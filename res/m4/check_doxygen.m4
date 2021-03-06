@@ -29,7 +29,7 @@ m4_define(
             DX_PS_FEATURE(OFF)
             DX_CHM_FEATURE(OFF)
             DX_CHI_FEATURE(OFF)
-            DX_INIT_DOXYGEN([PROJECT_NAME], [${top_srcdir}/Doxyfile], [doxygen])
+            DX_INIT_DOXYGEN([PROJECT_NAME], [${top_srcdir}/res/Doxyfile], [doxygen])
 
             AM_CONDITIONAL([ENABLE_DOXYGEN], [test "$DX_FLAG_doc" = "1"])
             AM_CONDITIONAL([ENABLE_DOXYGEN_MAN], [test "$DX_FLAG_man" = "1"])

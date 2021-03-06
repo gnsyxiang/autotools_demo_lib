@@ -3,7 +3,7 @@
  * Release under GPLv-3.0.
  * 
  * @file    module_a.h
- * @brief   
+ * @brief   模块A对外提供的操作接口
  * @author  gnsyxiang <gnsyxiang@163.com>
  * @date    05/03 2021 10:46
  * @version v0.0.1
@@ -24,6 +24,9 @@
 extern "C" {
 #endif
 
+/**
+ * @brief 初始化模块A
+ */
 void HyModuleAInit(void);
 
 #ifdef __cplusplus

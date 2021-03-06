@@ -20,7 +20,7 @@
 #include <stdio.h>
 
 #include "module_a.h"
-#include "sub_include/module_b.h"
+#include "sub_include/module_b_inter.h"
 
 void HyModuleAInit(void)
 {

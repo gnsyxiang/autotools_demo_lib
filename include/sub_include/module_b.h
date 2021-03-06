@@ -3,7 +3,7 @@
  * Release under GPLv-3.0.
  * 
  * @file    module_b.h
- * @brief   
+ * @brief   模块B对外提供的操作接口
  * @author  gnsyxiang <gnsyxiang@163.com>
  * @date    05/03 2021 17:13
  * @version v0.0.1
@@ -24,9 +24,10 @@
 extern "C" {
 #endif
 
+/**
+ * @brief  初始化模块B
+ */
 void HyModuleBInit(void);
-
-void module_b_func(void);
 
 #ifdef __cplusplus
 }

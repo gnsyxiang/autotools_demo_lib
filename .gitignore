@@ -36,6 +36,7 @@ configure.scan
 
 # ignore for autogen.sh
 m4/
+!res/m4
 build-aux/
 autom4te.cache/
 
