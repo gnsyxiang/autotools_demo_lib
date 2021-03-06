@@ -12,3 +12,10 @@
 make
 make install
 ```
+
+### 配置相关选项
+
+* `--prefix=PREFIX`: 指定安装路径
+
+* `--enable-doxygen-doc`: 生成html帮助文档
+
