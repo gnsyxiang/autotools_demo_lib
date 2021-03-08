@@ -48,6 +48,7 @@ AC_CONFIG_FILES([Makefile
                  example/Makefile
                  include/Makefile
                  include/sub_include/Makefile
+                 res/Makefile
                  src/Makefile
                  src/sub_src/Makefile])
 AC_OUTPUT

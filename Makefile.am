@@ -18,6 +18,12 @@
 #     last modified: 05/03 2021 10:32
 # ===============================================================
 
+SUBDIRS = \
+		  include \
+		  src \
+		  example \
+		  res
+
 ACLOCAL_AMFLAGS = -I m4
 
 NO_ERROR_COM = \
@@ -31,13 +37,20 @@ AM_CFLAGS_COM = \
 				$(ACLOCAL_AMFLAGS)
 export AM_CFLAGS_COM
 
-dist_doc_DATA = \
-				LICENSE \
-				README.md
+INSTALL_SCRIPTS_COM = \
+					  autogen.sh
 
-SUBDIRS = \
-		  include \
-		  src \
-		  example
+DIST_DOC_DATA_COM = \
+					LICENSE \
+					README.md
 
 include res/doxygen.am
+
+dist_bin_SCRIPTS = $(INSTALL_SCRIPTS_COM)
+dist_doc_DATA = $(DIST_DOC_DATA_COM)
+
+install-exec-hook:
+	for file in ${INSTALL_SCRIPTS_COM}; do \
+		rm -rf ${bindir}/$${file}; \
+	done
+
