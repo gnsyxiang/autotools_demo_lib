@@ -10,6 +10,7 @@ get_project_name()
 {
     libproject_name=`git remote -v | head -n1 | awk '{print $2}' | sed 's/.*\///' | sed 's/\.git//'`
     project_name=${libproject_name#*lib}
+    project_name_2=${libproject_name%lib*}
     echo -e "\e[32m\tproject_name: $libproject_name \e[0m"
 
     mkdir -p ${m4_dir}
@@ -17,7 +18,11 @@ get_project_name()
     echo    "m4_define([PROJECT_NAME], [$libproject_name])" >   ${check_project_info}
     echo    "m4_define([CHECK_PROJECT_INFO],"               >>  ${check_project_info}
     echo -e "\t\t  ["                                       >>  ${check_project_info}
-    echo -e "\t\t\tproject_name=$project_name"              >>  ${check_project_info}
+    if [ x$project_name_2 = x ]; then
+        echo -e "\t\t\tproject_name=$project_name"          >>  ${check_project_info}
+    else
+        echo -e "\t\t\tproject_name=$libproject_name"       >>  ${check_project_info}
+    fi
     echo -e "\t\t\tAC_SUBST(project_name)"                  >>  ${check_project_info}
     echo -e "\t\t  ])"                                      >>  ${check_project_info}
     echo    "m4_define([EMAIL_INFO], [gnsyxiang@163.com])"  >>  ${check_project_info}
