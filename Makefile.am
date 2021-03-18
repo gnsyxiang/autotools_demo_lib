@@ -37,20 +37,22 @@ AM_CFLAGS_COM = \
 				$(ACLOCAL_AMFLAGS)
 export AM_CFLAGS_COM
 
-INSTALL_SCRIPTS_COM = \
-					  autogen.sh
+DIST_FILES_COM = \
+				 autogen.sh
 
-DIST_DOC_DATA_COM = \
+INSTALL_FILES_COM = \
 					LICENSE \
 					README.md
 
+dist_doc_DATA = $(INSTALL_FILES_COM)
+
+EXTRA_DIST= $(DIST_FILES_COM)
+
 include res/doxygen.am
 
-dist_bin_SCRIPTS = $(INSTALL_SCRIPTS_COM)
-dist_doc_DATA = $(DIST_DOC_DATA_COM)
-
-install-exec-hook:
-	for file in ${INSTALL_SCRIPTS_COM}; do \
-		rm -rf ${bindir}/$${file}; \
-	done
+# dist_bin_SCRIPTS = $(INSTALL_SCRIPTS_COM)
+#install-exec-hook:
+#	for file in ${INSTALL_SCRIPTS_COM}; do \
+#		rm -rf ${bindir}/$${file}; \
+#	done
 
