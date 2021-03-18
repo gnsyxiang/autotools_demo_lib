@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# set -x
+
 TOP_DIR=.
 BUILD_AUX_DIR=${TOP_DIR}/res
 

@@ -49,6 +49,7 @@ AC_PROG_MKDIR_P
 # Checks for library functions.
 
 AC_CONFIG_FILES([Makefile
+                 $PACKAGE_NAME.pc
                  example/Makefile
                  include/Makefile
                  include/sub_include/Makefile

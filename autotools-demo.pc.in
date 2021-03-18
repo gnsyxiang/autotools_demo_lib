@@ -1,0 +1,16 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+includedir=@includedir@
+libdir=@libdir@
+bindir=@bindir@
+
+Name: @PACKAGE@
+Description: introduce information about the library
+URL: www.xxx.com
+Version: @VERSION@
+Requires:
+Requires.private:
+Conflicts:
+Cflags: -I${includedir}
+Libs: -L${libdir} -l@PACKAGE@
+Libs.private:

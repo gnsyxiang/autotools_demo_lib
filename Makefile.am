@@ -56,6 +56,9 @@ INSTALL_FILES_COM 	= LICENSE \
 					  README.md
 dist_doc_DATA 		= $(INSTALL_FILES_COM)
 
+pkgconfigdir 		= $(libdir)/pkgconfig
+pkgconfig_DATA 		= @PACKAGE_NAME@.pc
+
 # ---------------
 # make dist files
 # ---------------
