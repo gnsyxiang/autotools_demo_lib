@@ -1,0 +1,44 @@
+# ===============================================================
+# 
+# Release under GPLv-3.0.
+# 
+# @file    main_Makefile
+# @brief   
+# @author  gnsyxiang <gnsyxiang@163.com>
+# @date    18/03 2021 20:23
+# @version v0.0.1
+# 
+# @since    note
+# @note     note
+# 
+#     change log:
+#     NO.     Author              Date            Modified
+#     00      zhenquan.qiu        18/03 2021      create the file
+# 
+#     last modified: 18/03 2021 20:23
+# ===============================================================
+
+# CROSS_GCC_DIR 	?= /opt/toolchains/hisi/arm-hisiv510-linux/target/bin
+# CROSS_GCC_PATH 	?= $(CROSS_GCC_DIR)/arm-hisiv510-linux-
+# HOST ?= arm-hisiv510-linux
+
+GCC := $(CROSS_GCC_PATH)gcc
+
+INSTALL_PREFIX 		?= ..
+INSTALL_PREFIX_LIB 	:= $(INSTALL_PREFIX)/lib
+INSTALL_PREFIX_INC	:= $(INSTALL_PREFIX)/include
+
+CPPFLAGS_COM 	?=
+LDFLAGS_COM 	?=
+
+LDFLAGS_COM		+= -L$(INSTALL_PREFIX_LIB) -lautotools-demo
+CPPFLAGS_COM	+= -I$(INSTALL_PREFIX_INC)
+
+all: main
+
+main: main.c
+	$(GCC) -o $@ $< $(CPPFLAGS_COM) $(LDFLAGS_COM)
+
+clean:
+	rm -rf main
+

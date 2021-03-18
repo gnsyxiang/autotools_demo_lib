@@ -52,9 +52,9 @@ BIN_LDFLAGS_COM = -Wl,--gc-sections
 # ------------------
 # make install files
 # ------------------
-INSTALL_FILES_COM 	= LICENSE \
+install_files_com 	= LICENSE \
 					  README.md
-dist_doc_DATA 		= $(INSTALL_FILES_COM)
+dist_doc_DATA 		= $(install_files_com)
 
 pkgconfigdir 		= $(libdir)/pkgconfig
 pkgconfig_DATA 		= @PACKAGE_NAME@.pc
@@ -62,8 +62,9 @@ pkgconfig_DATA 		= @PACKAGE_NAME@.pc
 # ---------------
 # make dist files
 # ---------------
-DIST_FILES_COM 	= autogen.sh
-EXTRA_DIST 		= $(DIST_FILES_COM)
+dist_files_com 	= autogen.sh \
+				  autotools-demo.pc.in
+EXTRA_DIST 		= $(dist_files_com)
 
 # ----------
 # export var

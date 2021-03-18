@@ -2,10 +2,10 @@
  * 
  * Release under GPLv-3.0.
  * 
- * @file    main.c
+ * @file    test.c
  * @brief   
  * @author  gnsyxiang <gnsyxiang@163.com>
- * @date    18/03 2021 20:22
+ * @date    18/03 2021 20:21
  * @version v0.0.1
  * 
  * @since    note
@@ -15,12 +15,12 @@
  *     NO.     Author              Date            Modified
  *     00      zhenquan.qiu        18/03 2021      create the file
  * 
- *     last modified: 18/03 2021 20:22
+ *     last modified: 18/03 2021 20:21
  */
 #include <stdio.h>
 
-#include "autotools-demo/module_a.h"
-#include "autotools-demo/sub_include/module_b.h"
+#include "module_a.h"
+#include "sub_include/module_b.h"
 
 int main(int argc, char const* argv[])
 {
