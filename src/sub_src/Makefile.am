@@ -20,24 +20,27 @@
 
 noinst_LTLIBRARIES = libmodule_b.la
 
-SOURCES_COM = \
-			  module_b.c
+sources_com 	=
+include_com  	=
+cppflags_com 	=
+ldadd_com 		=
+ldflags_com 	=
 
-INCLUDE_COM = \
-			  -I$(top_srcdir)/include
+# ---------------------
+# add necessary content
+# ---------------------
+sources_com 	+= module_b.c
 
-CFLAGS_COM = \
-			 -ffunction-sections \
-			 -fdata-sections \
-			 $(AM_CFLAGS_COM) \
-			 $(INCLUDE_COM)
+include_com  	+= -I$(top_srcdir)/include
+cppflags_com 	+= $(LIB_CPPFLAGS_COM) \
+				   $(CPPFLAGS_COM) \
+				   $(include_com)
 
-LIBADD_COM =
+ldadd_com 		+=
 
-LDFLAGS_COM = \
-			  -rdynamic
+ldflags_com 	+= $(LIB_LDFLAGS_COM)
 
-AM_CFLAGS 				= $(CFLAGS_COM)
-libmodule_b_la_SOURCES  = $(SOURCES_COM)
-libmodule_b_la_LIBADD   = $(LIBADD_COM)
-libmodule_b_la_LDFLAGS  = $(LDFLAGS_COM)
+AM_CFLAGS 				= $(cppflags_com)
+libmodule_b_la_SOURCES  = $(sources_com)
+libmodule_b_la_LIBADD   = $(ldadd_com)
+libmodule_b_la_LDFLAGS  = $(ldflags_com)

@@ -18,26 +18,10 @@
 #     last modified: 08/03 2021 08:16
 # ===============================================================
 
-INSTALL_DATA_COM = \
-				   Doxyfile
-
-INSTALL_SCRIPTS_COM = \
-					  get_project_info.sh
-
-NO_INSTALL_SCRIPTS_COM =
-
-noinst_SCRIPTS = $(NO_INSTALL_SCRIPTS_COM)
-dist_bin_SCRIPTS = $(INSTALL_SCRIPTS_COM)
-
-dist_data_DATA = $(INSTALL_DATA_COM)
-
-install-data-hook:
-	for file in ${INSTALL_DATA_COM}; do \
-		rm -rf ${datarootdir}/$${file}; \
-	done
-
-install-exec-hook:
-	for file in ${INSTALL_SCRIPTS_COM}; do \
-		rm -rf ${bindir}/$${file}; \
-	done
+# ---------------
+# make dist files
+# ---------------
+DIST_FILES_COM 	= Doxyfile \
+				  get_project_info.sh
+EXTRA_DIST 		= $(DIST_FILES_COM)
 

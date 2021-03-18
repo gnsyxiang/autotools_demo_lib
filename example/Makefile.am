@@ -18,23 +18,25 @@
 #     last modified: 05/03 2021 10:38
 # ===============================================================
 
-INCLUDE_COM = \
-			  -I$(top_srcdir)/include
-
-CFLAGS_COM = \
-			 $(AM_CFLAGS_COM) \
-			 $(INCLUDE_COM)
-
-LDADD_COM = \
-			$(top_builddir)/src/lib@project_name@.la
-
-LDFLAGS_COM = \
-			  -Wl,--gc-sections
-
+include_com  	=
+cppflags_com 	=
+ldadd_com 		=
+ldflags_com 	=
 bin_PROGRAMS 	=
+
+# ---------------------
+# add necessary content
+# ---------------------
+include_com  	+= -I$(top_srcdir)/include
+cppflags_com 	+= $(CPPFLAGS_COM) \
+				   $(include_com)
+
+ldadd_com 		+= $(top_builddir)/src/lib@project_name@.la
+
+ldflags_com 	+= $(BIN_LDFLAGS_COM)
 
 bin_PROGRAMS	+= main
 main_SOURCES 	= main.c
-main_CFLAGS  	= $(CFLAGS_COM)
-main_LDADD   	= $(LDADD_COM)
-main_LDFLAGS	= $(LDFLAGS_COM)
+main_CPPFLAGS  	= $(cppflags_com)
+main_LDADD   	= $(ldadd_com)
+main_LDFLAGS	= $(ldflags_com)

@@ -18,37 +18,57 @@
 #     last modified: 05/03 2021 10:32
 # ===============================================================
 
-SUBDIRS = \
-		  include \
+include res/doxygen.am
+
+SUBDIRS = include \
 		  src \
 		  example \
 		  res
 
-ACLOCAL_AMFLAGS = -I m4
+# --------
+# cppflags
+# --------
+ACLOCAL_AMFLAGS 	= -I m4
+no_error_com 		= -Wno-error=unused-result \
+					  -Wno-unused-parameter \
+					  -Wno-error=unused-but-set-variable
+CPPFLAGS_COM 		= -pipe -W -Wall -Werror \
+					  $(no_error_com) \
+					  $(ACLOCAL_AMFLAGS)
 
-NO_ERROR_COM = \
-			   -Wno-error=unused-result \
-			   -Wno-unused-parameter \
-			   -Wno-error=unused-but-set-variable
+LIB_CPPFLAGS_COM 	= -ffunction-sections \
+					  -fdata-sections
 
-AM_CFLAGS_COM = \
-				-pipe -W -Wall -Werror \
-				$(NO_ERROR_COM) \
-				$(ACLOCAL_AMFLAGS)
-export AM_CFLAGS_COM
+# -----------
+# lib ldflags
+# -----------
+LIB_LDFLAGS_COM = -rdynamic
 
-DIST_FILES_COM = \
-				 autogen.sh
+# -----------
+# bin ldflags
+# -----------
+BIN_LDFLAGS_COM = -Wl,--gc-sections
 
-INSTALL_FILES_COM = \
-					LICENSE \
-					README.md
+# ------------------
+# make install files
+# ------------------
+INSTALL_FILES_COM 	= LICENSE \
+					  README.md
+dist_doc_DATA 		= $(INSTALL_FILES_COM)
 
-dist_doc_DATA = $(INSTALL_FILES_COM)
+# ---------------
+# make dist files
+# ---------------
+DIST_FILES_COM 	= autogen.sh
+EXTRA_DIST 		= $(DIST_FILES_COM)
 
-EXTRA_DIST= $(DIST_FILES_COM)
-
-include res/doxygen.am
+# ----------
+# export var
+# ----------
+export CPPFLAGS_COM
+export LIB_CPPFLAGS_COM
+export LIB_LDFLAGS_COM
+export BIN_LDFLAGS_COM
 
 # dist_bin_SCRIPTS = $(INSTALL_SCRIPTS_COM)
 #install-exec-hook:
@@ -56,3 +76,7 @@ include res/doxygen.am
 #		rm -rf ${bindir}/$${file}; \
 #	done
 
+#install-data-hook:
+#	for file in ${INSTALL_DATA_COM}; do \
+#		rm -rf ${datarootdir}/$${file}; \
+#	done

@@ -18,13 +18,11 @@
 #     last modified: 05/03 2021 10:35
 # ===============================================================
 
-SUBDIRS = \
-		  sub_include
+SUBDIRS = sub_include
 
-HEADERS_COM = \
-			  module_a.h
+NO_INSTALL_HEADERS_COM 	=
+noinst_HEADERS  		= $(NO_INSTALL_HEADERS_COM)
 
-install_includedir 	= $(includedir)/@project_name@
-
-noinst_HEADERS  		=
-install_include_HEADERS = $(HEADERS_COM)
+INSTALL_HEADERS_COM 	= module_a.h
+install_includedir 		= $(includedir)/@project_name@
+install_include_HEADERS = $(INSTALL_HEADERS_COM)

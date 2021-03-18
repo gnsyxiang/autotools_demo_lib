@@ -18,13 +18,9 @@
 #     last modified: 05/03 2021 17:20
 # ===============================================================
 
-INSTALL_HEADERS_COM = \
-					  module_b.h
-
-NO_INSTALL_HEADERS_COM = \
-						 module_b_inter.h
-
-install_includedir 	= $(includedir)/@project_name@/sub_include
-
+NO_INSTALL_HEADERS_COM 	= module_b_inter.h
 noinst_HEADERS  		= $(NO_INSTALL_HEADERS_COM)
+
+INSTALL_HEADERS_COM 	= module_b.h
+install_includedir 		= $(includedir)/@project_name@/sub_include
 install_include_HEADERS = $(INSTALL_HEADERS_COM)

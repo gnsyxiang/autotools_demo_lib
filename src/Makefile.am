@@ -18,32 +18,33 @@
 #     last modified: 05/03 2021 10:35
 # ===============================================================
 
-SUBDIRS = \
-		  sub_src
+SUBDIRS = sub_src
 
 lib_LTLIBRARIES = lib@project_name@.la
 
-SOURCES_COM = \
-			  module_a.c
+sources_com 	=
+include_com  	=
+cppflags_com 	=
+ldadd_com 		=
+ldflags_com 	=
 
-INCLUDE_COM = \
-			  -I$(top_srcdir)/include
+# ---------------------
+# add necessary content
+# ---------------------
+sources_com 	+= module_a.c
 
-CFLAGS_COM = \
-			 -ffunction-sections \
-			 -fdata-sections \
-			 $(AM_CFLAGS_COM) \
-			 $(INCLUDE_COM)
+include_com 	+= -I$(top_srcdir)/include
+cppflags_com 	+= $(LIB_CPPFLAGS_COM) \
+				   $(CPPFLAGS_COM) \
+				   $(include_com)
 
-LIBADD_COM = \
-			 $(top_builddir)/src/sub_src/libmodule_b.la
+ldadd_com 		+= $(top_builddir)/src/sub_src/libmodule_b.la
 
-LDFLAGS_COM = \
-			  -export-symbols-regex 'Hy*' \
-			  -rdynamic \
-			  -version-info @current@:@revision@:@age@
+ldflags_com 	+= -export-symbols-regex 'Hy*' \
+				   -version-info @current@:@revision@:@age@ \
+				   $(LIB_LDFLAGS_COM)
 
-AM_CFLAGS 						= $(CFLAGS_COM)
-lib@project_name@_la_SOURCES  	= $(SOURCES_COM)
-lib@project_name@_la_LIBADD   	= $(LIBADD_COM)
-lib@project_name@_la_LDFLAGS  	= $(LDFLAGS_COM)
+AM_CFLAGS 						= $(cppflags_com)
+lib@project_name@_la_SOURCES  	= $(sources_com)
+lib@project_name@_la_LIBADD   	= $(ldadd_com)
+lib@project_name@_la_LDFLAGS  	= $(ldflags_com)
