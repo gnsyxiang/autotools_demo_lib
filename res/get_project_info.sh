@@ -8,6 +8,7 @@ check_project_info=${m4_dir}/check_project_info.m4
 
 get_project_name()
 {
+    libproject_url=`git remote -v | head -n1 | awk '{print $2}' | sed 's/git@/https:\/\//' | sed 's/com:/com\//'`
     libproject_name=`git remote -v | head -n1 | awk '{print $2}' | sed 's/.*\///' | sed 's/\.git//'`
     project_name=${libproject_name#*lib}
     project_name_2=${libproject_name%lib*}
@@ -26,6 +27,7 @@ get_project_name()
     echo -e "\t\t\tAC_SUBST(project_name)"                  >>  ${check_project_info}
     echo -e "\t\t  ])"                                      >>  ${check_project_info}
     echo    "m4_define([EMAIL_INFO], [gnsyxiang@163.com])"  >>  ${check_project_info}
+    echo    "m4_define([PROJECT_URL], [$libproject_url])"   >>  ${check_project_info}
 }
 
 get_full_version_num()
