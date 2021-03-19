@@ -4,13 +4,22 @@
 #undef HAVE_DLFCN_H
 
 /* feature xxx */
-#undef HAVE_FEATURE_XXX
+#undef HAVE_ENABLE_FEATURE_XXX
 
 /* Define to 1 if you have the <inttypes.h> header file. */
 #undef HAVE_INTTYPES_H
 
 /* Define to 1 if you have the <memory.h> header file. */
 #undef HAVE_MEMORY_H
+
+/* select feature xxx a */
+#undef HAVE_SELECT_FEATURE_XXX_A
+
+/* select feature xxx b */
+#undef HAVE_SELECT_FEATURE_XXX_B
+
+/* select feature xxx c */
+#undef HAVE_SELECT_FEATURE_XXX_C
 
 /* Define to 1 if you have the <stdint.h> header file. */
 #undef HAVE_STDINT_H

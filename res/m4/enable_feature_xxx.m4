@@ -19,11 +19,11 @@ dnl     last modified: 15/03 2021 15:12
 dnl ===============================================================
 
 m4_define(
-        [ENABLE_FEATURE_XXX],
-        [
-            AC_ARG_ENABLE(
-                [feature_xxx],
-                [AS_HELP_STRING([--enable-feature-xxx], [feature xxx] [[default=no]])],
-                [AC_DEFINE(HAVE_FEATURE_XXX, 1, [feature xxx])])
-            AM_CONDITIONAL([COMPILE_WITH_FEATURE_XXX], [test "x$enable_feature_xxx" = "xyes"])
-        ])
+    [ENABLE_FEATURE_XXX],
+    [
+        AC_ARG_ENABLE(
+            [feature_xxx],
+            [AS_HELP_STRING([--enable-feature-xxx], [feature xxx] [[default=no]])],
+            [AC_DEFINE(HAVE_ENABLE_FEATURE_XXX, 1, [feature xxx])])
+        AM_CONDITIONAL([COMPILE_ENABLE_FEATURE_XXX], [test "x$enable_feature_xxx" = "xyes"])
+    ])
