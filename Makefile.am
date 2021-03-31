@@ -63,7 +63,7 @@ pkgconfig_DATA 		= @PACKAGE_NAME@.pc
 # make dist files
 # ---------------
 dist_files_com 	= autogen.sh \
-				  autotools-demo.pc.in
+				  @PACKAGE_NAME@.pc.in
 EXTRA_DIST 		= $(dist_files_com)
 
 # ----------
