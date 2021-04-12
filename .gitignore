@@ -59,6 +59,10 @@ libtool
 stamp-h1
 
 
+#--------------------
+# ignore for markdown 
+#--------------------
+*.svg
 
 #--------------------
 # ignore for building

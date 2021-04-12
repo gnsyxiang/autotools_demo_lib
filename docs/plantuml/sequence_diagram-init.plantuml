@@ -1,0 +1,36 @@
+@startuml
+
+' 变量定义 '
+!$main              = "main.c"
+
+!$module_a          = "src/module_a.c"
+!$module_a_color    = "#ff8899"
+
+!$module_b          = "src/sub_src/module_b.c"
+!$module_b_color    = "#DarkSalmon"
+
+[-> "$main": init
+
+participant "$main"
+
+' module_a init'
+"$main" -> "$module_a": HyModuleAInit
+
+activate "$module_a" $module_a_color
+"$module_a" -> "$module_b": module_b_func
+
+activate "$module_b" $module_b_color
+"$module_b" --> "$module_a": done
+deactivate "$module_b"
+
+"$module_a" -> "$main": done
+deactivate "$module_a"
+
+' module_b init'
+"$main" -> "$module_b": HyModuleBInit
+
+activate "$module_b" $module_b_color
+"$module_b" --> "$main": done
+deactivate "$module_b"
+
+@enduml

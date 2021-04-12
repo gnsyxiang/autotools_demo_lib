@@ -18,8 +18,16 @@
 #     last modified: 12/04 2021 16:13
 # ===============================================================
 
+SUBDIRS = plantuml
+
 # ------------------
 # make install files
 # ------------------
-install_files_com 	= sequence-diagram.md
+install_files_com 	= sequence_diagram.md
 dist_doc_DATA 		= $(install_files_com)
+
+svg_path 			= $(abs_top_builddir)/docs/plantuml
+pic_files_com 		= \
+					  $(svg_path)/sequence_diagram-init.svg
+pic_docdir 			= $(docdir)/pic
+pic_doc_DATA 		= $(pic_files_com)
