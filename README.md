@@ -1,4 +1,4 @@
-# autotools-demo
+# README
 
 
 ### 使用说明
