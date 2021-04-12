@@ -31,14 +31,16 @@ m4_define(
             DX_CHI_FEATURE(OFF)
             DX_INIT_DOXYGEN([PROJECT_NAME], [${top_srcdir}/res/Doxyfile], [doxygen])
 
-            AC_CHECK_PROG([DOXYGEN], [doxygen], [yes])
-            if test x"${DOXYGEN}" != x"yes" ; then
-                AC_MSG_ERROR([Please install doxygen with 'sudo apt install -y doxygen'.])
-            fi
+            if test x"${enable_doxygen_doc}" == x"yes" ; then
+                AC_CHECK_PROG([DOXYGEN], [doxygen], [yes])
+                if test x"${DOXYGEN}" != x"yes" ; then
+                    AC_MSG_ERROR([Please install doxygen with 'sudo apt install -y doxygen'.])
+                fi
 
-            AC_CHECK_PROG([DOT], [dot], [yes])
-            if test x"${DOT}" != x"yes" ; then
-                AC_MSG_ERROR([Please install graphviz with 'sudo apt install -y graphviz'.])
+                AC_CHECK_PROG([DOT], [dot], [yes])
+                if test x"${DOT}" != x"yes" ; then
+                    AC_MSG_ERROR([Please install graphviz with 'sudo apt install -y graphviz'.])
+                fi
             fi
 
             AM_CONDITIONAL([ENABLE_DOXYGEN], [test "$DX_FLAG_doc" = "1"])
