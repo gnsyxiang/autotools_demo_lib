@@ -16,3 +16,4 @@
 
 ### 反初始化时序图
 
+![sequence_diagram-deinit](../pic/sequence_diagram-deinit.svg)
