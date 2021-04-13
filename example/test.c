@@ -29,5 +29,10 @@ int main(int argc, char const* argv[])
     HyModuleAInit();
     HyModuleBInit();
 
+    printf("run main ok \n");
+
+    HyModuleBDeInit();
+    HyModuleADeInit();
+
     return 0;
 }

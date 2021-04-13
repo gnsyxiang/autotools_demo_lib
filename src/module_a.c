@@ -28,3 +28,8 @@ void HyModuleAInit(void)
 
     printf("module a init successful \n");
 }
+
+void HyModuleADeInit(void)
+{
+    printf("module a deinit successful \n");
+}

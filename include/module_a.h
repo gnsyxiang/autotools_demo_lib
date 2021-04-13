@@ -29,6 +29,11 @@ extern "C" {
  */
 void HyModuleAInit(void);
 
+/**
+ * @brief 反初始化模块A
+ */
+void HyModuleADeInit(void);
+
 #ifdef __cplusplus
 }
 #endif

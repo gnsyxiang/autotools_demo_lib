@@ -26,6 +26,11 @@ void HyModuleBInit(void)
     printf("module b init successful \n");
 }
 
+void HyModuleBDeInit(void)
+{
+    printf("module b deinit successful \n");
+}
+
 void module_b_func(void)
 {
     printf("module b func \n");
