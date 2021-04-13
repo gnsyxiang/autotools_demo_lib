@@ -5,6 +5,7 @@ AC_PREREQ([2.69])
 
 m4_include([m4/check_project_info.m4])
 
+m4_include([res/m4/check_java.m4])
 m4_include([res/m4/check_doxygen.m4])
 m4_include([res/m4/ax_prog_doxygen.m4])
 
@@ -27,6 +28,7 @@ LT_INIT
 CHECK_PROJECT_INFO
 CHECK_VERSION_INFO
 CHECK_DOXYGEN
+CHECK_JAVA
 
 ENABLE_FEATURE_XXX
 SELECT_FEATURE_XXX
