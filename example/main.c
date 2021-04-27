@@ -19,8 +19,8 @@
  */
 #include <stdio.h>
 
-#include "autotools-demo/module_a.h"
-#include "autotools-demo/sub_include/module_b.h"
+#include "autotools_demo_lib/module_a.h"
+#include "autotools_demo_lib/sub_include/module_b.h"
 
 int main(int argc, char const* argv[])
 {

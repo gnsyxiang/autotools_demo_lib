@@ -6,7 +6,7 @@ libdir=@libdir@
 Name: @PACKAGE@
 Version: @VERSION@
 URL: @PACKAGE_URL@
-Description: introduce information about the library
+Description: autotools demo for lib
 
 Requires:
 Requires.private:

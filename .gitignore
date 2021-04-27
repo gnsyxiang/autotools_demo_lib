@@ -71,7 +71,7 @@ stamp-h1
 _build/
 install/
 
-autotools-demo.pc
+autotools_demo_lib.pc
 
 *.o
 *.lo

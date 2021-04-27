@@ -31,7 +31,7 @@ INSTALL_PREFIX_INC	:= $(INSTALL_PREFIX)/include
 CPPFLAGS_COM 	?=
 LDFLAGS_COM 	?=
 
-LDFLAGS_COM		+= -L$(INSTALL_PREFIX_LIB) -lautotools-demo
+LDFLAGS_COM		+= -L$(INSTALL_PREFIX_LIB) -lautotools_demo_lib
 CPPFLAGS_COM	+= -I$(INSTALL_PREFIX_INC)
 
 all: main
