@@ -8,15 +8,15 @@
 
 * `java`
 
-因为使用了`*.plantuml`脚本开发相关时序图，该脚本转化为`svg`图片的过程中需要用到`java`开发环境
+因为使用了`plantuml`脚本开发相关时序图，并且[`plantuml.jar`](docs/plantuml/plantuml.jar)程序把脚本转换为`svg`图片的过程中需要用到`java`运行环境。
 
 * `doxygen`
 
-如果需要生成`html`文档，需要安装`doxygen`软件，把相关注释转化成文档
+如果需要生成`html`文档，需要安装`doxygen`软件，把相关注释转化成文档。执行`sudo apt install -y doxygen`
 
 * `graphviz`
 
-如果需要生成`html`文档中的调用图，需要安装`graphviz`软件，把函数调用通过图形的方式展示出来，并可以通过图形跳转
+如果需要生成`html`文档中的调用图，需要安装`graphviz`软件，把函数调用通过图形的方式展示出来，并可以通过图形跳转。执行`sudo apt install -y graphviz`
 
 
 ## 使用说明
@@ -25,7 +25,7 @@
 
 * 三部曲编译源码并生成对应文件
 
-```txt
+```shell
 $ ./configure
 $ make
 $ make install
@@ -39,3 +39,4 @@ $ make install
 
 * `--enable-feature-xxx`: 编译`feature-xxx`功能
 
+* `--with-feature-xxx=a/b/c`: 选择三者中的一个编译
