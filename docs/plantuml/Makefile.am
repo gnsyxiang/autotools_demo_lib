@@ -27,8 +27,14 @@ plantuml_jar 		= $(plantuml_dir_path)/plantuml.jar
 all: mk_plantuml_2_svg
 
 mk_plantuml_2_svg:
-	for file in ${plantuml_files}; do \
-		echo $${file}; \
-		java -jar ${plantuml_jar} -tsvg $${file} -o $(svg_path); \
+	for file_path in ${plantuml_files}; do 									\
+		file=$${file_path##*/}; 											\
+		svg_file=$${file%.*}.svg; 											\
+		if [ -f $(svg_path)/$${file%.*}.svg ]; then 						\
+			continue; 														\
+		else 																\
+			echo $${file_path}; 											\
+			java -jar ${plantuml_jar} -tsvg $${file_path} -o $(svg_path); 	\
+		fi 																	\
 	done
 
