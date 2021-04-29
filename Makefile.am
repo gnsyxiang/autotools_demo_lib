@@ -26,36 +26,43 @@ SUBDIRS = include \
 		  docs \
 		  res
 
-# --------
-# cppflags
-# --------
+# -----
+# flags
+# -----
 ACLOCAL_AMFLAGS 	= -I m4
-no_error_com 		= -Wno-error=unused-result \
+
+_no_error_com 		= -W -Wall -Werror \
+					  -Wno-error=unused-result \
 					  -Wno-unused-parameter \
 					  -Wno-error=unused-but-set-variable
-CPPFLAGS_COM 		= -pipe -W -Wall -Werror \
-					  $(no_error_com) \
-					  $(ACLOCAL_AMFLAGS)
 
-LIB_CPPFLAGS_COM 	= -ffunction-sections \
+_remove_unuse_func 	= -ffunction-sections \
 					  -fdata-sections
 
-# -----------
-# lib ldflags
-# -----------
-LIB_LDFLAGS_COM = -rdynamic
+CPPFLAGS_COM 		= -pipe \
+					  $(_no_error_com) \
+					  $(ACLOCAL_AMFLAGS)
 
-# -----------
-# bin ldflags
-# -----------
-BIN_LDFLAGS_COM = -Wl,--gc-sections
+CFLAGS_COM 			= $(_remove_unuse_func)
+
+CXXFLAGS_COM 		= $(_remove_unuse_func)
+
+LIB_LDFLAGS_COM 	= -rdynamic
+
+BIN_LDFLAGS_COM 	= -Wl,--gc-sections
+
+export CPPFLAGS_COM
+export CFLAGS_COM
+export CXXFLAGS_COM
+export LIB_LDFLAGS_COM
+export BIN_LDFLAGS_COM
 
 # ------------------
 # make install files
 # ------------------
-install_files_com 	= LICENSE \
+_install_files_com 	= LICENSE \
 					  README.md
-dist_doc_DATA 		= $(install_files_com)
+dist_doc_DATA 		= $(_install_files_com)
 
 pkgconfigdir 		= $(libdir)/pkgconfig
 pkgconfig_DATA 		= @PACKAGE_NAME@.pc
@@ -63,17 +70,9 @@ pkgconfig_DATA 		= @PACKAGE_NAME@.pc
 # ---------------
 # make dist files
 # ---------------
-dist_files_com 	= autogen.sh \
-				  @PACKAGE_NAME@.pc.in
-EXTRA_DIST 		= $(dist_files_com)
-
-# ----------
-# export var
-# ----------
-export CPPFLAGS_COM
-export LIB_CPPFLAGS_COM
-export LIB_LDFLAGS_COM
-export BIN_LDFLAGS_COM
+_dist_files_com 	= autogen.sh \
+					  @PACKAGE_NAME@.pc.in
+EXTRA_DIST 			= $(_dist_files_com)
 
 # dist_bin_SCRIPTS = $(INSTALL_SCRIPTS_COM)
 #install-exec-hook:

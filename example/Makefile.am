@@ -18,36 +18,49 @@
 #     last modified: 05/03 2021 10:38
 # ===============================================================
 
-include_com  	=
-cppflags_com 	=
-ldadd_com 		=
-ldflags_com 	=
+_include_com  	=
+_sources_com 	=
+_cppflags_com 	=
+_cflags_com 	=
+_cxxflags_com 	=
+_ldflags_com 	=
+_ldadd_com 		=
 bin_PROGRAMS 	=
 
 # ---------------------
 # add necessary content
 # ---------------------
-include_com  	+= -I$(top_srcdir)/include
-cppflags_com 	+= $(CPPFLAGS_COM) \
-				   $(include_com)
+_include_com  	+= -I$(top_srcdir)/include
 
-ldadd_com 		+= $(top_builddir)/src/lib@project_name@.la
+_sources_com 	+=
 
-ldflags_com 	+= $(BIN_LDFLAGS_COM)
+_cppflags_com 	+= $(CPPFLAGS_COM) \
+				   $(_include_com)
+
+_cflags_com 	+= $(CFLAGS_COM)
+
+_cxxflags_com 	+= $(CXXFLAGS_COM)
+
+_ldflags_com 	+= $(BIN_LDFLAGS_COM)
+
+_ldadd_com 		+= $(top_builddir)/src/lib@project_name@.la
 
 bin_PROGRAMS	+= test
-test_SOURCES 	= test.c
-test_CPPFLAGS  	= $(cppflags_com)
-test_LDADD   	= $(ldadd_com)
-test_LDFLAGS	= $(ldflags_com)
+test_SOURCES 	= $(_sources_com) test.c
+test_CPPFLAGS  	= $(_cppflags_com)
+test_CFLAGS  	= $(_cflags_com)
+test_CXXFLAGS  	= $(_cxxflags_com)
+test_LDFLAGS	= $(_ldflags_com)
+test_LDADD   	= $(_ldadd_com)
 
 # ------------------
 # make install files
 # ------------------
-install_files_com 	= main.c \
+_install_files_com 	= main.c \
 					  main_Makefile
-exampledir 			= $(prefix)/example
-dist_example_DATA 	= $(install_files_com)
+exampledir 		= $(prefix)/example
+dist_example_DATA 	= $(_install_files_com)
 
 install-data-hook:
 	mv ${exampledir}/main_Makefile ${exampledir}/Makefile
+

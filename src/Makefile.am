@@ -22,29 +22,37 @@ SUBDIRS = sub_src
 
 lib_LTLIBRARIES = lib@project_name@.la
 
-sources_com 	=
-include_com  	=
-cppflags_com 	=
-ldadd_com 		=
-ldflags_com 	=
+_include_com  	=
+_sources_com 	=
+_cppflags_com 	=
+_cflags_com 	=
+_cxxflags_com 	=
+_ldflags_com 	=
+_ldadd_com 		=
 
 # ---------------------
 # add necessary content
 # ---------------------
-sources_com 	+= module_a.c
+_include_com 	+= -I$(top_srcdir)/include
 
-include_com 	+= -I$(top_srcdir)/include
-cppflags_com 	+= $(LIB_CPPFLAGS_COM) \
-				   $(CPPFLAGS_COM) \
-				   $(include_com)
+_sources_com 	+= module_a.c
 
-ldadd_com 		+= $(top_builddir)/src/sub_src/libmodule_b.la
+_cppflags_com 	+= $(CPPFLAGS_COM) \
+				   $(_include_com)
 
-ldflags_com 	+= -export-symbols-regex 'Hy*' \
+_cflags_com 	+= $(CFLAGS_COM)
+
+_cxxflags_com 	+= $(CXXFLAGS_COM)
+
+_ldflags_com 	+= -export-symbols-regex 'Hy*' \
 				   -version-info @current@:@revision@:@age@ \
 				   $(LIB_LDFLAGS_COM)
 
-AM_CFLAGS 						= $(cppflags_com)
-lib@project_name@_la_SOURCES  	= $(sources_com)
-lib@project_name@_la_LIBADD   	= $(ldadd_com)
-lib@project_name@_la_LDFLAGS  	= $(ldflags_com)
+_ldadd_com 		+= $(top_builddir)/src/sub_src/libmodule_b.la
+
+lib@project_name@_la_SOURCES  	= $(_sources_com)
+lib@project_name@_la_CPPFLAGS 	= $(_cppflags_com)
+lib@project_name@_la_CFLAGS 	= $(_cflags_com)
+lib@project_name@_la_CXXFLAGS 	= $(_cxxflags_com)
+lib@project_name@_la_LDFLAGS  	= $(_ldflags_com)
+lib@project_name@_la_LIBADD   	= $(_ldadd_com)
