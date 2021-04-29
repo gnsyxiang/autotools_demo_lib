@@ -18,8 +18,11 @@ dnl
 dnl     last modified: 15/03 2021 15:12
 dnl ===============================================================
 
-m4_define(
-    [ENABLE_FEATURE_XXX],
+# ENABLE_FEATURE_XXX()
+# --------------------------------------------------------------
+# enable feature xxx
+
+AC_DEFUN([ENABLE_FEATURE_XXX],
     [
         AC_ARG_ENABLE(
             [feature_xxx],

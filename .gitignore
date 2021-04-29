@@ -76,6 +76,7 @@ stamp-h1
 .libs/
 _build/
 install/
+doxygen/
 
 autotools_demo_lib.pc
 

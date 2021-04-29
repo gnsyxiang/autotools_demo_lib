@@ -18,11 +18,14 @@ dnl
 dnl     last modified: 13/04 2021 09:01
 dnl ===============================================================
 
-m4_define(
-        [CHECK_JAVA],
-        [
-            AC_CHECK_PROG([JAVA], [java], [yes])
-            if test x"${JAVA}" != x"yes" ; then
-                AC_MSG_ERROR([Please install java development environment.])
-            fi
-        ])
+# CHECK_JAVA()
+# --------------------------------------------------------------
+# check java
+
+AC_DEFUN([CHECK_JAVA],
+    [
+        AC_CHECK_PROG([JAVA], [java], [yes])
+        if test x"${JAVA}" != x"yes" ; then
+            AC_MSG_ERROR([Please install java development environment.])
+        fi
+    ])
