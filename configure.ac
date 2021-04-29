@@ -5,12 +5,12 @@ AC_PREREQ([2.69])
 
 m4_include([m4/check_project_info.m4])
 
-m4_include([res/m4/check_java.m4])
-m4_include([res/m4/check_doxygen.m4])
-m4_include([res/m4/ax_prog_doxygen.m4])
+m4_include([m4/check_java.m4])
+m4_include([m4/check_doxygen.m4])
+m4_include([m4/ax_prog_doxygen.m4])
 
-m4_include([res/m4/enable_feature_xxx.m4])
-m4_include([res/m4/select_feature_xxx.m4])
+m4_include([m4/enable_feature_xxx.m4])
+m4_include([m4/select_feature_xxx.m4])
 
 AC_INIT([PROJECT_NAME], [VERSION_NUM], [EMAIL_INFO], [PROJECT_NAME], [PROJECT_URL])
 AC_CONFIG_SRCDIR([config.h.in])
