@@ -18,23 +18,23 @@
 #     last modified: 13/04 2021 08:13
 # ===============================================================
 
-plantuml_dir_path 	= $(top_srcdir)/docs/plantuml
-svg_path 			= $(abs_top_builddir)/docs/plantuml
+# ------------------
+# make install files
+# ------------------
+_pic_files_com 		= sequence_diagram-deinit.svg \
+					  sequence_diagram-init.svg
+pic_docdir 			= $(docdir)/pic
+pic_doc_DATA 		= $(_pic_files_com)
 
-plantuml_files 		= $(plantuml_dir_path)/*.plantuml
-plantuml_jar 		= $(plantuml_dir_path)/plantuml.jar
+# build
+SUFFIXES = .svg.haha
 
-all: mk_plantuml_2_svg
+java_verbose = $(java_verbose_@AM_V@)
+java_verbose_ = $(java_verbose_@AM_DEFAULT_V@)
+java_verbose_0 = @echo "  JAVA      " $@;
 
-mk_plantuml_2_svg:
-	for file_path in ${plantuml_files}; do 									\
-		file=$${file_path##*/}; 											\
-		svg_file=$${file%.*}.svg; 											\
-		if [ -f $(svg_path)/$${file%.*}.svg ]; then 						\
-			continue; 														\
-		else 																\
-			echo $${file_path}; 											\
-			java -jar ${plantuml_jar} -tsvg $${file_path} -o $(svg_path); 	\
-		fi 																	\
-	done
+.plantuml.svg:
+	$(java_verbose)java -jar plantuml.jar -tsvg $<
+
+BUILT_SOURCES = ${_pic_files_com}
 

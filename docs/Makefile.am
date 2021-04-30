@@ -18,16 +18,14 @@
 #     last modified: 12/04 2021 16:13
 # ===============================================================
 
+if HAVA_JAVA_PROGRAM
 SUBDIRS = plantuml
 
 # ------------------
 # make install files
 # ------------------
-install_files_com 	= sequence_diagram.md
-dist_doc_DATA 		= $(install_files_com)
+_install_files_com 	= sequence_diagram.md
+dist_doc_DATA 		= $(_install_files_com)
 
-svg_path 			= $(abs_top_builddir)/docs/plantuml
-pic_files_com 		= $(svg_path)/sequence_diagram-deinit.svg \
-					  $(svg_path)/sequence_diagram-init.svg
-pic_docdir 			= $(docdir)/pic
-pic_doc_DATA 		= $(pic_files_com)
+endif
+

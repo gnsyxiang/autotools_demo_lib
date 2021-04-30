@@ -25,7 +25,5 @@ dnl ===============================================================
 AC_DEFUN([CHECK_JAVA],
     [
         AC_CHECK_PROG([JAVA], [java], [yes])
-        if test x"${JAVA}" != x"yes" ; then
-            AC_MSG_ERROR([Please install java development environment.])
-        fi
+        AM_CONDITIONAL([HAVA_JAVA_PROGRAM], [test "x$JAVA" = "xyes"])
     ])
