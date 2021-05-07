@@ -37,6 +37,10 @@ _include_com 	+= -I$(top_srcdir)/include
 
 _sources_com 	+= module_a.c
 
+if COMPILE_SELECT_FEATURE_XXX_A
+_sources_com 	+=
+endif
+
 _cppflags_com 	+= $(CPPFLAGS_COM) \
 				   $(_include_com)
 
