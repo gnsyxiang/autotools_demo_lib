@@ -32,9 +32,12 @@ SUBDIRS = include \
 ACLOCAL_AMFLAGS 	= -I m4
 
 _no_error_com 		= -W -Wall -Werror \
-					  -Wno-error=unused-result \
 					  -Wno-unused-parameter \
 					  -Wno-error=unused-but-set-variable
+
+# 下面两个参数一个显示警告，一个直接通过
+_no_error_com 		+= -Wno-error=unused-parameter
+# _no_error_com 		+= -Wno-unused-parameter
 
 _remove_unuse_func 	= -ffunction-sections \
 					  -fdata-sections
@@ -47,6 +50,8 @@ CFLAGS_COM 			= $(_remove_unuse_func)
 
 CXXFLAGS_COM 		= $(_remove_unuse_func)
 
+# 用来通知链接器将所有符号添加到动态符号表中
+#（目的是能够通过使用 dlopen 来实现向后跟踪）
 LIB_LDFLAGS_COM 	= -rdynamic
 
 BIN_LDFLAGS_COM 	= -Wl,--gc-sections
