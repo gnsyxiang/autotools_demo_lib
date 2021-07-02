@@ -48,9 +48,7 @@ pkgconfigdir        = $(libdir)/pkgconfig
 # add necessary content
 # ---------------------
 _no_error_com       += \
-                       -W -Wall -Werror \
-                       -Wno-unused-parameter \
-                       -Wno-error=unused-but-set-variable
+                       -W -Wall -Werror
 
 # 下面两个参数一个显示警告，一个直接通过
 _no_error_com       += -Wno-error=unused-parameter
@@ -97,13 +95,3 @@ _dist_files_com     += \
                        @project_name@.pc.in
 EXTRA_DIST          = $(_dist_files_com)
 
-# dist_bin_SCRIPTS = $(INSTALL_SCRIPTS_COM)
-#install-exec-hook:
-#	for file in ${INSTALL_SCRIPTS_COM}; do \
-#		rm -rf ${bindir}/$${file}; \
-#	done
-
-#install-data-hook:
-#	for file in ${INSTALL_DATA_COM}; do \
-#		rm -rf ${datarootdir}/$${file}; \
-#	done

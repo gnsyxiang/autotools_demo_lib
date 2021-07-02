@@ -22,9 +22,18 @@ if HAVA_JAVA_PROGRAM
 SUBDIRS = plantuml
 
 # ------------------
+# defining variables
+# ------------------
+_install_files_com  =
+
+# ---------------------
+# add necessary content
+# ---------------------
+_install_files_com  += sequence_diagram.md
+
+# ------------------
 # make install files
 # ------------------
-_install_files_com  = sequence_diagram.md
 dist_doc_DATA       = $(_install_files_com)
 
 endif

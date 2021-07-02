@@ -130,9 +130,8 @@ _ldflags_com    += -export-symbols-regex 'Hy*'
 # 表示该library对于依赖于current=c-a(libraryname.so.2)到current=c(libraryname.so.3)的程序都是可用的， 运行时不会出现任何异常。
 _ldflags_com    += -version-info @current@:@revision@:@age@
 
-_ldflags_com    += $(LIB_LDFLAGS_COM)
-
-_ldadd_com      += $(top_builddir)/src/sub_src/libmodule_b.la
+_ldflags_com    += $(LIB_LDFLAGS_COM) \
+                   $(top_builddir)/src/sub_src/libmodule_b.la
 
 lib@project_name@_la_SOURCES    = $(_sources_com)
 lib@project_name@_la_CPPFLAGS   = $(_cppflags_com)
