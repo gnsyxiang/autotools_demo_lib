@@ -24,8 +24,8 @@ SUBDIRS = plantuml
 # ------------------
 # make install files
 # ------------------
-_install_files_com 	= sequence_diagram.md
-dist_doc_DATA 		= $(_install_files_com)
+_install_files_com  = sequence_diagram.md
+dist_doc_DATA       = $(_install_files_com)
 
 endif
 

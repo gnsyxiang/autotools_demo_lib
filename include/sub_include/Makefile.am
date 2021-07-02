@@ -18,9 +18,23 @@
 #     last modified: 05/03 2021 17:20
 # ===============================================================
 
-NO_INSTALL_HEADERS_COM 	= module_b_inter.h
-noinst_HEADERS  		= $(NO_INSTALL_HEADERS_COM)
+# ------------------
+# defining variables
+# ------------------
+_no_install_headers_com =
+_install_headers_com    =
 
-INSTALL_HEADERS_COM 	= module_b.h
-install_includedir 		= $(includedir)/@project_name@/sub_include
-install_include_HEADERS = $(INSTALL_HEADERS_COM)
+install_includedir      = $(includedir)/@project_name@/sub_include
+
+# ---------------------
+# add necessary content
+# ---------------------
+_no_install_headers_com += module_b_inter.h
+
+_install_headers_com    += module_b.h
+
+# ------------------
+# make install files
+# ------------------
+noinst_HEADERS          = $(_no_install_headers_com)
+install_include_HEADERS = $(_install_headers_com)

@@ -19,14 +19,14 @@
 # ===============================================================
 
 # ------------------
-# make install files
+# defining variables
 # ------------------
-_pic_files_com 		= sequence_diagram-deinit.svg \
-					  sequence_diagram-init.svg
-pic_docdir 			= $(docdir)/pic
-pic_doc_DATA 		= $(_pic_files_com)
+_pic_files_com      =
+pic_docdir          = $(docdir)/pic
 
-# build
+# ----------------
+# compile svg file
+# ----------------
 SUFFIXES = .svg.haha
 
 java_verbose = $(java_verbose_@AM_V@)
@@ -37,4 +37,12 @@ java_verbose_0 = @echo "  JAVA      " $@;
 	$(java_verbose)java -jar plantuml.jar -tsvg $<
 
 BUILT_SOURCES = ${_pic_files_com}
+
+# ------------------
+# make install files
+# ------------------
+_pic_files_com      += \
+                       sequence_diagram-deinit.svg \
+                       sequence_diagram-init.svg
+pic_doc_DATA        = $(_pic_files_com)
 

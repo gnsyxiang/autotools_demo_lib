@@ -20,9 +20,24 @@
 
 SUBDIRS = sub_include
 
-NO_INSTALL_HEADERS_COM 	=
-noinst_HEADERS  		= $(NO_INSTALL_HEADERS_COM)
+# ------------------
+# defining variables
+# ------------------
+_no_install_headers_com =
+_install_headers_com    =
 
-INSTALL_HEADERS_COM 	= module_a.h
-install_includedir 		= $(includedir)/@project_name@
-install_include_HEADERS = $(INSTALL_HEADERS_COM)
+install_includedir      = $(includedir)/@project_name@
+
+# ---------------------
+# add necessary content
+# ---------------------
+_no_install_headers_com +=
+
+_install_headers_com    += module_a.h
+
+# ------------------
+# make install files
+# ------------------
+noinst_HEADERS          = $(_no_install_headers_com)
+install_include_HEADERS = $(_install_headers_com)
+

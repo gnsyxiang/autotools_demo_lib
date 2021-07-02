@@ -22,31 +22,35 @@ SUBDIRS = sub_src
 
 lib_LTLIBRARIES = lib@project_name@.la
 
-_include_com  	=
-_sources_com 	=
-_cppflags_com 	=
-_cflags_com 	=
-_cxxflags_com 	=
-_ldflags_com 	=
-_ldadd_com 		=
+# ------------------
+# defining variables
+# ------------------
+_include_com    =
+_sources_com    =
+_cppflags_com   =
+_cflags_com     =
+_cxxflags_com   =
+_ldflags_com    =
+_ldadd_com      =
 
 # ---------------------
 # add necessary content
 # ---------------------
-_include_com 	+= -I$(top_srcdir)/include
+_include_com    += -I$(top_srcdir)/include
 
-_sources_com 	+= module_a.c
+_sources_com    += module_a.c
 
 if COMPILE_SELECT_FEATURE_XXX_A
-_sources_com 	+=
+_sources_com    +=
 endif
 
-_cppflags_com 	+= $(CPPFLAGS_COM) \
-				   $(_include_com)
+_cppflags_com   += \
+                   $(CPPFLAGS_COM) \
+                   $(_include_com)
 
-_cflags_com 	+= $(CFLAGS_COM)
+_cflags_com     += $(CFLAGS_COM)
 
-_cxxflags_com 	+= $(CXXFLAGS_COM)
+_cxxflags_com   += $(CXXFLAGS_COM)
 
 # 导出函数列表方法：
 # 1，直接添加__attribute__((visibility("hidden")))到函数上
@@ -60,7 +64,7 @@ _cxxflags_com 	+= $(CXXFLAGS_COM)
 #  Hal_strncpy;
 #  local: *; };
 # 4, 通过libtool导出函数列表，如下参数
-_ldflags_com 	+= -export-symbols-regex 'Hy*'
+_ldflags_com    += -export-symbols-regex 'Hy*'
 
 # 1, 版本命名规则 
 #    1>  libtool动态库的版本由三个字段组成current:revision:age
@@ -124,16 +128,16 @@ _ldflags_com 	+= -export-symbols-regex 'Hy*'
 #    * readelf: 可以查看动态库的信息，本身的soname。
 #    * ldd: 可以查看应用程序或共享库依赖的库
 # 表示该library对于依赖于current=c-a(libraryname.so.2)到current=c(libraryname.so.3)的程序都是可用的， 运行时不会出现任何异常。
-_ldflags_com 	+= -version-info @current@:@revision@:@age@
+_ldflags_com    += -version-info @current@:@revision@:@age@
 
-_ldflags_com 	+= $(LIB_LDFLAGS_COM)
+_ldflags_com    += $(LIB_LDFLAGS_COM)
 
-_ldadd_com 		+= $(top_builddir)/src/sub_src/libmodule_b.la
+_ldadd_com      += $(top_builddir)/src/sub_src/libmodule_b.la
 
-lib@project_name@_la_SOURCES  	= $(_sources_com)
-lib@project_name@_la_CPPFLAGS 	= $(_cppflags_com)
-lib@project_name@_la_CFLAGS 	= $(_cflags_com)
-lib@project_name@_la_CXXFLAGS 	= $(_cxxflags_com)
-lib@project_name@_la_LDFLAGS  	= $(_ldflags_com)
-lib@project_name@_la_LIBADD   	= $(_ldadd_com)
+lib@project_name@_la_SOURCES    = $(_sources_com)
+lib@project_name@_la_CPPFLAGS   = $(_cppflags_com)
+lib@project_name@_la_CFLAGS     = $(_cflags_com)
+lib@project_name@_la_CXXFLAGS   = $(_cxxflags_com)
+lib@project_name@_la_LDFLAGS    = $(_ldflags_com)
+lib@project_name@_la_LIBADD     = $(_ldadd_com)
 
