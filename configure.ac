@@ -48,7 +48,7 @@ AC_PROG_MKDIR_P
 # Checks for library functions.
 
 AC_CONFIG_FILES([Makefile
-                 $PACKAGE_NAME.pc
+                 $project_name.pc
                  docs/Makefile
                  docs/plantuml/Makefile
                  example/Makefile

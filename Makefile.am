@@ -87,14 +87,14 @@ _install_files_com  += \
                        LICENSE \
                        README.md
 dist_doc_DATA       = $(_install_files_com)
-pkgconfig_DATA      = @PACKAGE_NAME@.pc
+pkgconfig_DATA      = @project_name@.pc
 
 # ---------------
 # make dist files
 # ---------------
 _dist_files_com     += \
                        autogen.sh \
-                       @PACKAGE_NAME@.pc.in
+                       @project_name@.pc.in
 EXTRA_DIST          = $(_dist_files_com)
 
 # dist_bin_SCRIPTS = $(INSTALL_SCRIPTS_COM)
