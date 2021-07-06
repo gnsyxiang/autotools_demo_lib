@@ -92,6 +92,7 @@ pkgconfig_DATA      = @project_name@.pc
 # ---------------
 _dist_files_com     += \
                        autogen.sh \
+                       build.sh \
                        @project_name@.pc.in
 EXTRA_DIST          = $(_dist_files_com)
 
