@@ -24,7 +24,7 @@ SUBDIRS = \
           include \
           src \
           example \
-          docs \
+          doc \
           res
 
 # ------------------

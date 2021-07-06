@@ -49,8 +49,8 @@ AC_PROG_MKDIR_P
 
 AC_CONFIG_FILES([Makefile
                  $project_name.pc
-                 docs/Makefile
-                 docs/plantuml/Makefile
+                 doc/Makefile
+                 doc/plantuml/Makefile
                  example/Makefile
                  include/Makefile
                  include/sub_include/Makefile
