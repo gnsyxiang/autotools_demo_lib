@@ -40,3 +40,4 @@ $ make install
 * `--enable-feature-xxx`: 编译`feature-xxx`功能
 
 * `--with-feature-xxx=a/b/c`: 选择三者中的一个编译
+

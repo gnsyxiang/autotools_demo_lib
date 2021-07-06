@@ -23,6 +23,7 @@ elif [ x$1 = x"pwd" ]; then
     gcc_version=x86_64-linux-gnu
 else
     echo "eg: ./build.sh pc/arm"
+    exit
 fi
 
 # 3rd_lib path
