@@ -95,3 +95,5 @@ _dist_files_com     += \
                        @project_name@.pc.in
 EXTRA_DIST          = $(_dist_files_com)
 
+DISTCLEANFILES = @project_name@.pc
+
