@@ -2,9 +2,14 @@
 
 # set -x
 
-if [ $# != 1 ]; then
-    echo "eg: ./build.sh pc/arm"
+help_info()
+{
+    echo "eg: ./build.sh pc/arm [_build]"
     exit
+}
+
+if [ $# -gt 2 -o $# -lt 1 ]; then
+    help_info
 fi
 
 data_disk_path=/opt/data
@@ -18,12 +23,8 @@ elif [ x$1 = x"arm" ]; then
     gcc_version=arm-himix200-linux
     gcc_prefix=arm-himix200-linux
     cross_gcc_path=${data_disk_path}/opt/toolchains/${vender}/${gcc_version}/bin/${gcc_prefix}-
-elif [ x$1 = x"pwd" ]; then
-    vender=pc
-    gcc_version=x86_64-linux-gnu
 else
-    echo "eg: ./build.sh pc/arm"
-    exit
+    help_info
 fi
 
 # 3rd_lib path
@@ -35,9 +36,9 @@ prefix_path=${lib_3rd_path}
 
 cd ${target_path} && ./autogen.sh && cd -
 
-if [ x$1 != x"pwd" ]; then
-    mkdir -p _build/${vender}
-    cd _build/${vender}
+if [ -n x$2 ]; then
+    mkdir -p $2/${vender}
+    cd $2/${vender}
 fi
 
 ${target_path}/configure                            \
