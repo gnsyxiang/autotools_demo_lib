@@ -48,7 +48,10 @@ pkgconfigdir        = $(libdir)/pkgconfig
 # add necessary content
 # ---------------------
 _no_error_com       += \
-                       -W -Wall -Werror
+                       -W -Wall -Werror \
+                       -Wno-error=unused-but-set-variable \
+                       -Wno-error=unused-variable \
+                       -Wno-error=unused-function
 
 # 下面两个参数一个显示警告，一个直接通过
 _no_error_com       += -Wno-error=unused-parameter
