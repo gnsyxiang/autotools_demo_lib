@@ -21,6 +21,21 @@
 /* select feature xxx c */
 #undef HAVE_SELECT_FEATURE_XXX_C
 
+/* select linux target system */
+#undef HAVE_SELECT_TARGET_OS_LINUX
+
+/* select mac target system */
+#undef HAVE_SELECT_TARGET_OS_MAC
+
+/* select mcu target system */
+#undef HAVE_SELECT_TARGET_OS_MCU
+
+/* select rtos target system */
+#undef HAVE_SELECT_TARGET_OS_RTOS
+
+/* select window target system */
+#undef HAVE_SELECT_TARGET_OS_WINDOW
+
 /* Define to 1 if you have the <stdint.h> header file. */
 #undef HAVE_STDINT_H
 
