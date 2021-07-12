@@ -60,22 +60,21 @@ _no_error_com       += \
 _no_error_com       += -Wno-error=unused-parameter
 # _no_error_com         += -Wno-unused-parameter
 
-_remove_unuse_func  += \
-                       -ffunction-sections \
-                       -fdata-sections
-
 CPPFLAGS_COM        += \
                        -pipe \
                        $(_no_error_com) \
                        $(ACLOCAL_AMFLAGS)
 
-CFLAGS_COM          += $(_remove_unuse_func)
-CXXFLAGS_COM        += $(_remove_unuse_func)
-
 # 用来通知链接器将所有符号添加到动态符号表中
 #（目的是能够通过使用 dlopen 来实现向后跟踪）
 LIB_LDFLAGS_COM     += -rdynamic
 
+# 不链接未使用函数，减小可执行文件大小
+_remove_unuse_func  += \
+                       -ffunction-sections \
+                       -fdata-sections
+CFLAGS_COM          += $(_remove_unuse_func)
+CXXFLAGS_COM        += $(_remove_unuse_func)
 BIN_LDFLAGS_COM     += -Wl,--gc-sections
 
 export CPPFLAGS_COM
