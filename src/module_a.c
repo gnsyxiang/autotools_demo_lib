@@ -19,19 +19,10 @@
  */
 #include <stdio.h>
 
-#include "config.h"
-
 #include "module_a.h"
-#include "sub_include/module_b_inter.h"
 
 void HyModuleAInit(void)
 {
-    module_b_func();
-
-#ifdef HAVE_SELECT_FEATURE_XXX_A
-    printf("select feature xxx a\n");
-#endif
-
     printf("module a init successful \n");
 }
 

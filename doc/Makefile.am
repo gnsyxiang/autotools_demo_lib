@@ -18,23 +18,3 @@
 #     last modified: 12/04 2021 16:13
 # ===============================================================
 
-if HAVA_JAVA_PROGRAM
-SUBDIRS = plantuml
-
-# ------------------
-# defining variables
-# ------------------
-_install_files_com  =
-
-# ---------------------
-# add necessary content
-# ---------------------
-_install_files_com  += sequence_diagram.md
-
-# ------------------
-# make install files
-# ------------------
-dist_doc_DATA       = $(_install_files_com)
-
-endif
-

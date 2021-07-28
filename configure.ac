@@ -23,11 +23,7 @@ PKG_PROG_PKG_CONFIG([0.24])
 CHECK_PROJECT_INFO
 CHECK_VERSION_INFO
 CHECK_DOXYGEN
-CHECK_JAVA
-
-SELECT_TARGET_OS
-ENABLE_FEATURE_XXX
-SELECT_FEATURE_XXX
+# CHECK_JAVA
 
 # Checks for programs.
 AC_PROG_CXX
@@ -51,11 +47,8 @@ AC_PROG_MKDIR_P
 AC_CONFIG_FILES([Makefile
                  $project_name.pc
                  doc/Makefile
-                 doc/plantuml/Makefile
                  example/Makefile
                  include/Makefile
-                 include/sub_include/Makefile
                  res/Makefile
-                 src/Makefile
-                 src/sub_src/Makefile])
+                 src/Makefile])
 AC_OUTPUT

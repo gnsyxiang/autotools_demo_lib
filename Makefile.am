@@ -24,11 +24,8 @@ SUBDIRS = \
           include \
           src \
           doc \
+          example \
           res
-
-if COMPILE_SELECT_TARGET_OS_LINUX
-SUBDIRS += example
-endif
 
 # ------------------
 # defining variables
@@ -52,24 +49,18 @@ pkgconfigdir        = $(libdir)/pkgconfig
 # ---------------------
 _no_error_com       += \
                        -W -Wall -Werror \
+                       -Wno-error=unused-parameter \
                        -Wno-error=unused-but-set-variable \
                        -Wno-error=unused-variable \
                        -Wno-error=unused-function
-
-# 下面两个参数一个显示警告，一个直接通过
-_no_error_com       += -Wno-error=unused-parameter
-# _no_error_com         += -Wno-unused-parameter
 
 CPPFLAGS_COM        += \
                        -pipe \
                        $(_no_error_com) \
                        $(ACLOCAL_AMFLAGS)
 
-# 用来通知链接器将所有符号添加到动态符号表中
-#（目的是能够通过使用 dlopen 来实现向后跟踪）
 LIB_LDFLAGS_COM     += -rdynamic
 
-# 不链接未使用函数，减小可执行文件大小
 _remove_unuse_func  += \
                        -ffunction-sections \
                        -fdata-sections

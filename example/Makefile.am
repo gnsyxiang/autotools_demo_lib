@@ -52,22 +52,11 @@ _ldflags_com    += $(BIN_LDFLAGS_COM)
 
 _ldadd_com      += $(top_builddir)/src/lib@project_name@.la
 
-bin_PROGRAMS    += test
-test_SOURCES    = $(_sources_com) test.c
-test_CPPFLAGS   = $(_cppflags_com)
-test_CFLAGS     = $(_cflags_com)
-test_CXXFLAGS   = $(_cxxflags_com)
-test_LDFLAGS    = $(_ldflags_com)
-test_LDADD      = $(_ldadd_com)
-
-# ------------------
-# make install files
-# ------------------
-_install_com    += \
-                   main.c \
-                   main_Makefile
-dist_example_DATA = $(_install_com)
-
-install-data-hook:
-	mv ${exampledir}/main_Makefile ${exampledir}/Makefile
+bin_PROGRAMS    += main
+main_SOURCES    = $(_sources_com) main.c
+main_CPPFLAGS   = $(_cppflags_com)
+main_CFLAGS     = $(_cflags_com)
+main_CXXFLAGS   = $(_cxxflags_com)
+main_LDFLAGS    = $(_ldflags_com)
+main_LDADD      = $(_ldadd_com)
 
