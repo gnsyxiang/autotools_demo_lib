@@ -77,6 +77,16 @@ CFLAGS_COM          += $(_remove_unuse_func)
 CXXFLAGS_COM        += $(_remove_unuse_func)
 BIN_LDFLAGS_COM     += -Wl,--gc-sections
 
+# 用户指定的库全部链接，不管有没有使用
+# BIN_LDFLAGS_COM     += -Wl,--no-as-needed
+
+# 用户指定的库按需链接
+BIN_LDFLAGS_COM     += -Wl,--as-needed
+
+# 部分库不管有没有使用都链接，其他库按照需要链接
+# note: 指定参数后面的链接库一律按照前面的参数，直到修改相同功能的配置参数
+# BIN_LDFLAGS_COM     += -Wl,--no-as-needed -lpthread -Wl,--as-needed
+
 export CPPFLAGS_COM
 export CFLAGS_COM
 export CXXFLAGS_COM
