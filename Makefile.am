@@ -68,6 +68,8 @@ CFLAGS_COM          += $(_remove_unuse_func)
 CXXFLAGS_COM        += $(_remove_unuse_func)
 BIN_LDFLAGS_COM     += -Wl,--gc-sections
 
+BIN_LDFLAGS_COM     += -Wl,--as-needed
+
 export CPPFLAGS_COM
 export CFLAGS_COM
 export CXXFLAGS_COM
