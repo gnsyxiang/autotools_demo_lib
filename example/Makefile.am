@@ -30,9 +30,6 @@ _ldflags_com    =
 _ldadd_com      =
 bin_PROGRAMS    =
 
-_install_com    =
-exampledir      = $(prefix)/example
-
 # ---------------------
 # add necessary content
 # ---------------------
