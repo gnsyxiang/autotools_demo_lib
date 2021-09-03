@@ -65,8 +65,13 @@ CPPFLAGS_COM        += \
                        $(_no_error_com) \
                        $(ACLOCAL_AMFLAGS)
 
-# 用来通知链接器将所有符号添加到动态符号表中
-#（目的是能够通过使用 dlopen 来实现向后跟踪）
+# -fstack-protector: 启用堆栈保护，不过只为局部变量中含有 char 数组的函数插入保护代码。
+# -fstack-protector-all: 启用堆栈保护，为所有函数插入保护代码。
+# -fno-stack-protector: 禁用堆栈保护。
+CPPFLAGS_COM        += -fstack-protector-all
+
+# 用来通知链接器将所有符号(不仅仅只是程序已使用到的外部符号)添加到动态符号表(.dynsym)中
+# 目的是能够通过使用 dlopen 或 backtrace 等一系列函数来实现向后跟踪
 LIB_LDFLAGS_COM     += -rdynamic
 
 # 不链接未使用函数，减小可执行文件大小
