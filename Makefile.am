@@ -59,7 +59,9 @@ CPPFLAGS_COM        += \
                        $(_no_error_com) \
                        $(ACLOCAL_AMFLAGS)
 
-LIB_LDFLAGS_COM     += -rdynamic
+CPPFLAGS_COM        += -fstack-protector-all
+
+BIN_LDFLAGS_COM     += -rdynamic
 
 _remove_unuse_func  += \
                        -ffunction-sections \
