@@ -27,7 +27,3 @@ $ make install
 
 * `--enable-doxygen-doc`: 生成html帮助文档
 
-* `--enable-feature-xxx`: 编译`feature-xxx`功能
-
-* `--with-feature-xxx=a/b/c`: 选择三者中的一个编译
-
