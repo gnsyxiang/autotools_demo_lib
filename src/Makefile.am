@@ -23,6 +23,7 @@ lib_LTLIBRARIES = lib@project_name@.la
 # ------------------
 # defining variables
 # ------------------
+_no_error_com   =
 _include_com    =
 _sources_com    =
 _cppflags_com   =
@@ -34,12 +35,15 @@ _ldadd_com      =
 # ---------------------
 # add necessary content
 # ---------------------
+_no_error_com   +=
+
 _include_com    += -I$(top_srcdir)/include
 
 _sources_com    += module_a.c
 
 _cppflags_com   += \
                    $(CPPFLAGS_COM) \
+                   $(_no_error_com) \
                    $(_include_com)
 
 _cflags_com     += $(CFLAGS_COM)
