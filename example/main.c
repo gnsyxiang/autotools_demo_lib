@@ -19,15 +19,13 @@
  */
 #include <stdio.h>
 
-#include "autotools_demo_lib/module_a.h"
-#include "autotools_demo_lib/sub_include/module_b.h"
+#include "module_a.h"
 
 int main(int argc, char const* argv[])
 {
     printf("hello world \n");
 
     HyModuleAInit();
-    HyModuleBInit();
 
     return 0;
 }

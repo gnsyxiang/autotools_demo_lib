@@ -24,11 +24,8 @@ SUBDIRS = \
           include \
           src \
           doc \
+          example \
           res
-
-if COMPILE_SELECT_TARGET_OS_LINUX
-SUBDIRS += example
-endif
 
 # ------------------
 # defining variables
@@ -52,29 +49,20 @@ pkgconfigdir        = $(libdir)/pkgconfig
 # ---------------------
 _no_error_com       += \
                        -W -Wall -Werror \
+                       -Wno-error=unused-parameter \
                        -Wno-error=unused-but-set-variable \
                        -Wno-error=unused-variable \
                        -Wno-error=unused-function
-
-# 下面两个参数一个显示警告，一个直接通过
-_no_error_com       += -Wno-error=unused-parameter
-# _no_error_com         += -Wno-unused-parameter
 
 CPPFLAGS_COM        += \
                        -pipe \
                        $(_no_error_com) \
                        $(ACLOCAL_AMFLAGS)
 
-# -fstack-protector: 启用堆栈保护，不过只为局部变量中含有 char 数组的函数插入保护代码。
-# -fstack-protector-all: 启用堆栈保护，为所有函数插入保护代码。
-# -fno-stack-protector: 禁用堆栈保护。
 CPPFLAGS_COM        += -fstack-protector-all
 
-# 用来通知链接器将所有符号(不仅仅只是程序已使用到的外部符号)添加到动态符号表(.dynsym)中
-# 目的是能够通过使用 dlopen 或 backtrace 等一系列函数来实现向后跟踪
-LIB_LDFLAGS_COM     += -rdynamic
+BIN_LDFLAGS_COM     += -rdynamic
 
-# 不链接未使用函数，减小可执行文件大小
 _remove_unuse_func  += \
                        -ffunction-sections \
                        -fdata-sections
@@ -82,15 +70,7 @@ CFLAGS_COM          += $(_remove_unuse_func)
 CXXFLAGS_COM        += $(_remove_unuse_func)
 BIN_LDFLAGS_COM     += -Wl,--gc-sections
 
-# 用户指定的库全部链接，不管有没有使用
-# BIN_LDFLAGS_COM     += -Wl,--no-as-needed
-
-# 用户指定的库按需链接
 BIN_LDFLAGS_COM     += -Wl,--as-needed
-
-# 部分库不管有没有使用都链接，其他库按照需要链接
-# note: 指定参数后面的链接库一律按照前面的参数，直到修改相同功能的配置参数
-# BIN_LDFLAGS_COM     += -Wl,--no-as-needed -lpthread -Wl,--as-needed
 
 export CPPFLAGS_COM
 export CFLAGS_COM
