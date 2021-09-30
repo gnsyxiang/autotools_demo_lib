@@ -21,7 +21,7 @@ _ldflag_com=""
 _param_com=""
 
 _cppflags_com="${_cppflags_com} -W -Wall -Werror"
-_cppflags_com="${_cppflags_com} -Wno-error=unused-parameter"
+_cppflags_com="${_cppflags_com} -Wno-unused-parameter"
 _cppflags_com="${_cppflags_com} -Wno-error=unused-but-set-variable"
 _cppflags_com="${_cppflags_com} -Wno-error=unused-variable"
 _cppflags_com="${_cppflags_com} -Wno-error=unused-function"
