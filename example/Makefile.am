@@ -40,16 +40,13 @@ _include_com    += -I$(top_srcdir)/include
 
 _sources_com    +=
 
-_cppflags_com   += \
-                   $(CPPFLAGS_COM) \
-                   $(_no_error_com) \
-                   $(_include_com)
+_cppflags_com   += $(_no_error_com) $(_include_com)
 
-_cflags_com     += $(CFLAGS_COM)
+_cflags_com     +=
 
-_cxxflags_com   += $(CXXFLAGS_COM)
+_cxxflags_com   +=
 
-_ldflags_com    += $(BIN_LDFLAGS_COM)
+_ldflags_com    +=
 
 _ldadd_com      += $(top_builddir)/src/lib@project_name@.la
 

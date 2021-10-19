@@ -41,19 +41,15 @@ _include_com    += -I$(top_srcdir)/include
 
 _sources_com    += module_a.c
 
-_cppflags_com   += \
-                   $(CPPFLAGS_COM) \
-                   $(_no_error_com) \
-                   $(_include_com)
+_cppflags_com   += $(_no_error_com) $(_include_com)
 
-_cflags_com     += $(CFLAGS_COM)
+_cflags_com     +=
 
-_cxxflags_com   += $(CXXFLAGS_COM)
+_cxxflags_com   +=
 
 _ldflags_com    += \
                    -export-symbols-regex 'Hy*' \
-                   -version-info @current@:@revision@:@age@ \
-                   $(LIB_LDFLAGS_COM)
+                   -version-info @current@:@revision@:@age@
 
 _ldadd_com      +=
 
