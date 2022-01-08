@@ -30,4 +30,3 @@ _dist_file_com  += \
                    Doxyfile             \
                    get_project_info.sh
 EXTRA_DIST      = $(_dist_file_com)
-

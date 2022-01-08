@@ -60,4 +60,3 @@ _dist_files_com     += \
 EXTRA_DIST          = $(_dist_files_com)
 
 DISTCLEANFILES = @project_name@.pc
-
