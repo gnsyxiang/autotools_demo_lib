@@ -54,11 +54,31 @@ AC_PROG_MKDIR_P
 
 # Checks for library functions.
 
-AC_CONFIG_FILES([Makefile
+AC_CONFIG_FILES([
+                 Makefile
                  $project_name.pc
                  doc/Makefile
                  example/Makefile
                  include/Makefile
                  res/Makefile
-                 src/Makefile])
+                 src/Makefile
+                 ])
 AC_OUTPUT
+
+AC_MSG_RESULT([
+               $PACKAGE $VERSION
+
+               CC:                  ${CC}
+               CPPFLAGS:            ${CPPFLAGS}
+               CFLAGS:              ${CFLAGS}
+               CXX:                 ${CXX}
+               CXXFLAGS:            ${CXXFLAGS}
+               LDFLAGS:             ${LDFLAGS}
+               LIBS:                ${LIBS}
+
+               prefix:              ${prefix}
+               sysconfdir:          ${sysconfdir}
+               libdir:              ${libdir}
+               includedir:          ${includedir}
+               pkgconfigdir:        ${pkgconfigdir}
+               ])
