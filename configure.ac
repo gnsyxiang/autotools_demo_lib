@@ -25,6 +25,16 @@ CHECK_VERSION_INFO
 CHECK_DOXYGEN
 # CHECK_JAVA
 
+PKG_PROG_PKG_CONFIG
+if test -n "$PKG_CONFIG"; then
+    # Horrible hack for systems where the pkg-config install directory is simply wrong!
+    if $PKG_CONFIG --variable=pc_path pkg-config 2>/dev/null | grep -q /lib/; then
+        PKG_INSTALLDIR(['${prefix}/lib/pkgconfig'])
+        else
+            PKG_INSTALLDIR
+    fi
+fi
+
 # Checks for programs.
 AC_PROG_CXX
 AC_PROG_AWK
