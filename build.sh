@@ -2,103 +2,190 @@
 
 # set -x
 
-help_info()
+select_vender()
 {
-    echo "eg: ./build.sh pc/arm/mcu release/debug [_build]"
-    exit
+    echo "support vender: "
+    for i in `find ./build-script/ -maxdepth 1 -type d`; do
+        vender="${vender} ${i##*/}"
+    done
+    echo "${vender}"
+
+    echo -n "please select vender: "
+    read usr_select_vender
+
+    _flag="false"
+    for i in `find ./build-script/ -maxdepth 1 -type d`; do
+        if [[ ${i##*/} = ${usr_select_vender} ]]; then
+            _flag="true"
+            break
+        fi
+    done
+    if [[ ${_flag} != "true" ]]; then
+        echo "error select vender !!!"
+        exit
+    fi
 }
 
-if [ $# -gt 3 -o $# -lt 2 ]; then
-    help_info
-fi
+select_chip()
+{
+    echo "support chip: "
+    for i in `find ./build-script/${usr_select_vender} -name "config.sh"`; do
+        _chip=`sed '/^chip=/!d;s/.*=//' $i`
+        chip="${chip} ${_chip}"
+    done
+    echo " ${chip}"
 
-data_disk_path=/opt/data
+    echo -n "please select chip: "
+    read usr_select_chip
+
+    _flag="false"
+    for i in `find ./build-script/${usr_select_vender} -name "config.sh"`; do
+        _chip=`sed '/^chip=/!d;s/.*=//' $i`
+        if [[ ${_chip} = ${usr_select_chip} ]]; then
+            _flag="true"
+            break
+        fi
+    done
+    if [[ ${_flag} != "true" ]]; then
+        echo "error select chip !!!"
+        exit
+    fi
+}
+
+select_product()
+{
+    echo "support product: "
+    _product_file=./build-script/${usr_select_vender}/${usr_select_chip}/config.sh
+
+    _product=`sed '/^product=/!d;s/.*=//' $_product_file`
+    echo ${_product}
+
+    echo -n "please select product: "
+    read usr_select_product
+
+    _flag="false"
+    _product_array=(`echo ${_product}`)
+    for i in ${_product_array[@]}; do
+        if [[ $i = ${usr_select_product} ]]; then
+            _flag="true"
+            break
+        fi
+    done
+    if [[ ${_flag} != "true" ]]; then
+        echo "error select product !!!"
+        exit
+    fi
+}
+
+select_build_version()
+{
+    echo "support build version: "
+    echo "  release debug"
+
+    echo -n "please select build version: "
+    read usr_select_build_version
+
+    _flag="false"
+    _product_array=(`echo "release debug"`)
+    for i in ${_product_array[@]}; do
+        if [[ $i = ${usr_select_build_version} ]]; then
+            _flag="true"
+            break
+        fi
+    done
+    if [[ ${_flag} != "true" ]]; then
+        echo "error select build version !!!"
+        exit
+    fi
+
+    if [[ ${usr_select_build_version} = "debug" ]]; then
+        cppflag="${cppflag} -g -O0"
+        configure_param="${configure_param} --enable-debug_info"
+    else
+        cppflag="${cppflag} -O2 -DNDEBUG"
+    fi
+}
+
+get_com_config()
+{
+    cppflag="${cppflag} -W -Wall -Werror"
+    cppflag="${cppflag} -Wno-address"
+    cppflag="${cppflag} -Wno-unused-parameter"
+    cppflag="${cppflag} -Wno-error=unused-but-set-variable"
+    cppflag="${cppflag} -Wno-error=unused-variable"
+    cppflag="${cppflag} -Wno-error=unused-function"
+    cppflag="${cppflag} -pipe"
+    cppflag="${cppflag} -ffunction-sections"
+    cppflag="${cppflag} -fdata-sections"
+
+    ldflag="${ldflag} -Wl,--gc-sections"
+    ldflag="${ldflag} -Wl,--as-needed"
+    ldflag="${ldflag} -Wl,-rpath=../lib"
+}
+
+get_config()
+{
+    _config_file=./build-script/${usr_select_vender}/${usr_select_chip}/config.sh
+
+    host=`sed '/^host=/!d;s/.*=//' $_config_file`
+    gcc_version=`sed '/^gcc_version=/!d;s/.*=//' $_config_file`
+    cross_gcc_path=`sed '/^cross_gcc_path=/!d;s/.*=//' $_config_file`
+
+    _cppflag=`sed '/^cppflag=/!d;s/.*=//' $_config_file`
+    _cflag=`sed '/^cflag=/!d;s/.*=//' $_config_file`
+    _cxxflag=`sed '/^cxxflag=/!d;s/.*=//' $_config_file`
+    _ldflag=`sed '/^ldflag=/!d;s/.*=//' $_config_file`
+    _lib=`sed '/^lib=/!d;s/lib=//' $_config_file`
+
+    install_path=`sed '/^install_path=/!d;s/.*=//' $_config_file`
+
+    cppflag="${cppflag} ${_cppflag}"
+    cflag="${cflag} ${_cflag}"
+    cxxflag="${cxxflag} ${_cxxflag}"
+    ldflag="${ldflag} ${_ldflag}"
+    lib="${lib} ${_lib}"
+
+    echo ${lib}
+}
+
+select_vender
+select_chip
+select_product
+select_build_version
+get_com_config
+get_config
+
 cur_path=`pwd`
 
-_cppflags_com="-W -Wall -Werror"
-_cppflags_com="${_cppflags_com} -Wno-unused-parameter"
-_cppflags_com="${_cppflags_com} -Wno-error=unused-but-set-variable"
-_cppflags_com="${_cppflags_com} -Wno-error=unused-variable"
-_cppflags_com="${_cppflags_com} -Wno-error=unused-function"
-_cppflags_com="${_cppflags_com} -pipe"
-_cppflags_com="${_cppflags_com} -ffunction-sections"
-_cppflags_com="${_cppflags_com} -fdata-sections"
-_cppflags_com="${_cppflags_com} -fstack-protector-all"
-
-_cflags_com=""
-
-_cxxflags_com=""
-
-_ldflag_com="-rdynamic"
-_ldflag_com="${_ldflag_com} -Wl,--gc-sections"
-_ldflag_com="${_ldflag_com} -Wl,--as-needed"
-_ldflag_com="${_ldflag_com} -Wl,-rpath=../lib"
-
-_param_com=""
-
-if [ x$1 = x"pc" ]; then
-    vender=pc
-    gcc_version=x86_64-linux-gnu
-elif [ x$1 = x"arm" ]; then
-    vender=hisi
-    host=arm-himix200-linux
-    gcc_version=arm-himix200-linux
-    gcc_prefix=arm-himix200-linux
-    cross_gcc_path=${data_disk_path}/opt/toolchains/${vender}/${gcc_version}/bin/${gcc_prefix}-
-elif [ x$1 = x"mcu" ]; then
-    vender=gnu_arm_embedded
-    host=arm-none-eabi
-    gcc_version=gcc-arm-none-eabi-5_4-2016q3
-    gcc_prefix=arm-none-eabi
-    cross_gcc_path=${data_disk_path}/opt/toolchains/${vender}/${gcc_version}/bin/${gcc_prefix}-
-
-    _ldflag_com="${_ldflag_com} -specs=nano.specs -specs=nosys.specs"
-else
-    help_info
-fi
-
-if [ x$2 = x"release" ]; then
-    _cppflags_com="${_cppflags_com} -g -O2 -DNDEBUG"
-else
-    _cppflags_com="${_cppflags_com} -g -O0"
-    _param_com="${_param_com} --enable-debug_info"
-fi
-
-# 3rd_lib path
-prefix_path=${data_disk_path}/install/${vender}/${gcc_version}
-_cppflags_com="${_cppflags_com} -I${prefix_path}/include"
-_ldflag_com="${_ldflag_com} -L${prefix_path}/lib"
-
-# target
-target_path=`pwd`
+cppflag="${cppflag} -I${install_path}/include"
+ldflag="${ldflag} -L${install_path}/lib"
 
 make distclean
 
 cd ${cur_path} && ./autogen.sh && cd -
 
-if [ $# = 3 ]; then
-    mkdir -p $3/${vender}/${2}
-    cd $3/${vender}/${2}
-fi
-
 export STRIP=${cross_gcc_path}strip
 ${cur_path}/configure                                       \
     CC=${cross_gcc_path}gcc                                 \
     CXX=${cross_gcc_path}g++                                \
-    CPPFLAGS="${_cppflags_com}"                             \
-    CFLAGS="${_cflags_com}"                                 \
-    CXXFLAGS="${_cxxflags_com}"                             \
-    LDFLAGS="${_ldflag_com}"                                \
-    LIBS=""                                                 \
-    PKG_CONFIG_PATH="${prefix_path}/lib/pkgconfig"          \
-    --prefix=${prefix_path}                                 \
+    CPPFLAGS="${cppflag}"                                   \
+    CFLAGS="${cflag}"                                       \
+    CXXFLAGS="${cxxflag}"                                   \
+    LDFLAGS="${ldflag}"                                     \
+    LIBS="${lib}"                                           \
+    PKG_CONFIG_PATH="${install_path}/lib/pkgconfig"         \
+    --prefix=${install_path}                                \
     --build=                                                \
     --host=${host}                                          \
     --target=${host}                                        \
     \
-    ${_param_com}
-
+    ${configure_param}
 
 thread_jobs=`getconf _NPROCESSORS_ONLN 2>/dev/null || echo 1`
 
-make -j${thread_jobs} && make install
+if [ x$usr_select_build_version = x"release" ]; then
+    make -j${thread_jobs} && make install-strip
+else
+    make -j${thread_jobs} && make install
+fi
+
