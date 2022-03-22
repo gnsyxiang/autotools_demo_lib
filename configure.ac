@@ -59,15 +59,20 @@ AC_PROG_MKDIR_P
 
 # Checks for library functions.
 
-AC_CONFIG_FILES([
-                 Makefile
+AC_CONFIG_FILES([Makefile
                  $project_name.pc
+                 build-script/Makefile
+                 build-script/arterytek/Makefile
+                 build-script/arterytek/at32f4xx/Makefile
+                 build-script/eeasytech/Makefile
+                 build-script/eeasytech/SV823/Makefile
+                 build-script/pc/Makefile
+                 build-script/pc/pc-chip/Makefile
                  doc/Makefile
                  example/Makefile
                  include/Makefile
                  res/Makefile
-                 src/Makefile
-                 ])
+                 src/Makefile])
 AC_OUTPUT
 
 AC_MSG_RESULT([

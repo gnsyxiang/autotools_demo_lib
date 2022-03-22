@@ -2,20 +2,33 @@
 
 # set -x
 
+format_str_array_output()
+{
+    _out_put_array=(`echo ${1}`)
+    for i in ${_out_put_array[@]}; do
+        echo "    $i"
+    done
+}
+
 select_vender()
 {
     echo "support vender: "
     for i in `find ./build-script/ -maxdepth 1 -type d`; do
-        vender="${vender} ${i##*/}"
+        _vender="${_vender} ${i##*/}"
     done
-    echo "${vender}"
+
+    format_str_array_output "${_vender}"
 
     echo -n "please select vender: "
     read usr_select_vender
 
     _flag="false"
     for i in `find ./build-script/ -maxdepth 1 -type d`; do
-        if [[ ${i##*/} = ${usr_select_vender} ]]; then
+        _i="${i##*/}"
+        if [[ ${#_i} = 0 ]]; then
+            continue
+        fi
+        if [[ $_i = ${usr_select_vender} ]]; then
             _flag="true"
             break
         fi
@@ -24,6 +37,18 @@ select_vender()
         echo "error select vender !!!"
         exit
     fi
+
+    platform_type=""
+    case ${usr_select_vender} in
+        pc | eeasytech)
+            configure_param="${configure_param} --with-platform=linux"
+            platform_type="linux"
+            ;;
+        arterytek)
+            configure_param="${configure_param} --with-platform=mcu"
+            platform_type="mcu"
+            ;;
+    esac
 }
 
 select_chip()
@@ -33,7 +58,8 @@ select_chip()
         _chip=`sed '/^chip=/!d;s/.*=//' $i`
         chip="${chip} ${_chip}"
     done
-    echo " ${chip}"
+
+    format_str_array_output "${chip}"
 
     echo -n "please select chip: "
     read usr_select_chip
@@ -50,43 +76,22 @@ select_chip()
         echo "error select chip !!!"
         exit
     fi
-}
 
-select_product()
-{
-    echo "support product: "
-    _product_file=./build-script/${usr_select_vender}/${usr_select_chip}/config.sh
-
-    _product=`sed '/^product=/!d;s/.*=//' $_product_file`
-    echo ${_product}
-
-    echo -n "please select product: "
-    read usr_select_product
-
-    _flag="false"
-    _product_array=(`echo ${_product}`)
-    for i in ${_product_array[@]}; do
-        if [[ $i = ${usr_select_product} ]]; then
-            _flag="true"
-            break
-        fi
-    done
-    if [[ ${_flag} != "true" ]]; then
-        echo "error select product !!!"
-        exit
-    fi
+    configure_param="${configure_param} --with-mcu_chip=${usr_select_chip}"
 }
 
 select_build_version()
 {
     echo "support build version: "
-    echo "  release debug"
+    _build_version="release debug"
+
+    format_str_array_output "${_build_version}"
 
     echo -n "please select build version: "
     read usr_select_build_version
 
     _flag="false"
-    _product_array=(`echo "release debug"`)
+    _product_array=(`echo "${_build_version}"`)
     for i in ${_product_array[@]}; do
         if [[ $i = ${usr_select_build_version} ]]; then
             _flag="true"
@@ -131,13 +136,14 @@ get_config()
     gcc_version=`sed '/^gcc_version=/!d;s/.*=//' $_config_file`
     cross_gcc_path=`sed '/^cross_gcc_path=/!d;s/.*=//' $_config_file`
 
-    _cppflag=`sed '/^cppflag=/!d;s/.*=//' $_config_file`
-    _cflag=`sed '/^cflag=/!d;s/.*=//' $_config_file`
-    _cxxflag=`sed '/^cxxflag=/!d;s/.*=//' $_config_file`
-    _ldflag=`sed '/^ldflag=/!d;s/.*=//' $_config_file`
-    _lib=`sed '/^lib=/!d;s/lib=//' $_config_file`
+    _cppflag=`sed '/^cppflag=/!d;s/^cppflag=//' $_config_file`
+    _cflag=`sed '/^cflag=/!d;s/^cflag=//' $_config_file`
+    _cxxflag=`sed '/^cxxflag=/!d;s/^cxxflag=//' $_config_file`
+    _ldflag=`sed '/^ldflag=/!d;s/^ldflag=//' $_config_file`
+    _lib=`sed '/^lib=/!d;s/^lib=//' $_config_file`
 
-    install_path=`sed '/^install_path=/!d;s/.*=//' $_config_file`
+    _install_path=`sed '/^install_path=/!d;s/.*=//' $_config_file`
+    install_path=${_install_path}
 
     cppflag="${cppflag} ${_cppflag}"
     cflag="${cflag} ${_cflag}"
@@ -150,7 +156,6 @@ get_config()
 
 select_vender
 select_chip
-select_product
 select_build_version
 get_com_config
 get_config
