@@ -9,6 +9,45 @@
 /* Define to 1 if you have the <memory.h> header file. */
 #undef HAVE_MEMORY_H
 
+/* select at32f4xx chip */
+#undef HAVE_SELECT_CHIP_AT32F4XX
+
+/* select pc chip */
+#undef HAVE_SELECT_CHIP_PC
+
+/* select SV823 chip */
+#undef HAVE_SELECT_CHIP_SV823
+
+/* select cn language */
+#undef HAVE_SELECT_LANGUAGE_CN
+
+/* select en language */
+#undef HAVE_SELECT_LANGUAGE_EN
+
+/* select HY-8608 product */
+#undef HAVE_SELECT_PRODUCT_HY_8608
+
+/* select HY-8608E product */
+#undef HAVE_SELECT_PRODUCT_HY_8608E
+
+/* select HY-8608EV2 product */
+#undef HAVE_SELECT_PRODUCT_HY_8608EV2
+
+/* select HY-MCU-6606 product */
+#undef HAVE_SELECT_PRODUCT_HY_MCU_6606
+
+/* select HY-pc product */
+#undef HAVE_SELECT_PRODUCT_PC
+
+/* select arterytek vender */
+#undef HAVE_SELECT_VENDER_ARTERYTEK
+
+/* select eeasytech vender */
+#undef HAVE_SELECT_VENDER_EEASYTECH
+
+/* select pc vender */
+#undef HAVE_SELECT_VENDER_PC
+
 /* Define to 1 if you have the <stdint.h> header file. */
 #undef HAVE_STDINT_H
 

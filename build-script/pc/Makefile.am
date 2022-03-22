@@ -5,7 +5,7 @@
 # @file    Makefile.am
 # @brief   
 # @author  gnsyxiang <gnsyxiang@163.com>
-# @date    12/03 2022 17:14
+# @date    21/03 2022 19:13
 # @version v0.0.1
 # 
 # @since    note
@@ -13,10 +13,14 @@
 # 
 #     change log:
 #     NO.     Author              Date            Modified
-#     00      zhenquan.qiu        12/03 2022      create the file
+#     00      zhenquan.qiu        21/03 2022      create the file
 # 
-#     last modified: 12/03 2022 17:14
+#     last modified: 21/03 2022 19:13
 # ===============================================================
 
-SUBDIRS = pc-chip
+if COMPILE_SELECT_CHIP_PC
+select_chip = pc-chip
+endif
+
+SUBDIRS = $(select_chip)
 

@@ -25,6 +25,11 @@ CHECK_VERSION_INFO
 CHECK_DOXYGEN
 # CHECK_JAVA
 
+SELECT_VENDER
+SELECT_CHIP
+SELECT_PRODUCT
+SELECT_LANGUAGE
+
 PKG_PROG_PKG_CONFIG
 if test -n "$PKG_CONFIG"; then
     # Horrible hack for systems where the pkg-config install directory is simply wrong!
