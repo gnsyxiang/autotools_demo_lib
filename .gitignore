@@ -84,7 +84,5 @@ autotools_demo_lib.pc
 *.lo
 *.la
 
-example/main
-example/test
-
+example/hy_*_demo
 

@@ -19,13 +19,10 @@
  */
 #include <stdio.h>
 
-#include "module_a.h"
+#include "hy_calc.h"
 
 int main(int argc, char const* argv[])
 {
-    printf("hello world \n");
-
-    HyModuleAInit();
 
     return 0;
 }
