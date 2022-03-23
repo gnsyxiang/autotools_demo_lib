@@ -25,6 +25,7 @@ SUBDIRS = \
           src           \
           doc           \
           example       \
+          unit_test     \
           res           \
           build-script
 

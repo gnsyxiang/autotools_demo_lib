@@ -25,6 +25,8 @@ CHECK_VERSION_INFO
 CHECK_DOXYGEN
 # CHECK_JAVA
 
+CHECK_LIBCUNIT
+
 SELECT_VENDER
 SELECT_CHIP
 SELECT_PRODUCT
@@ -59,6 +61,7 @@ AC_PROG_MKDIR_P
 # Checks for libraries.
 
 # Checks for header files.
+AC_CHECK_HEADERS([stdlib.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
 
@@ -77,7 +80,8 @@ AC_CONFIG_FILES([Makefile
                  example/Makefile
                  include/Makefile
                  res/Makefile
-                 src/Makefile])
+                 src/Makefile
+                 unit_test/Makefile])
 AC_OUTPUT
 
 AC_MSG_RESULT([
