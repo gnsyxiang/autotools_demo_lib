@@ -17,5 +17,5 @@ cxxflag=
 ldflag=-rdynamic
 lib=
 
-install_path=/opt/data/nfs/install
+install_path=/opt/data/nfs/install/eeasytech/SV823
 
