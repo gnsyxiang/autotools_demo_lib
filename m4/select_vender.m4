@@ -27,7 +27,8 @@ AC_DEFUN([SELECT_VENDER],
         vender=""
 
         AC_ARG_WITH([vender],
-            [AS_HELP_STRING([--with-vender=@<:@pc|eeasytech|arterytek@:>@], [select vender about @<:@pc|eeasytech|arterytek@:>@ @<:@default=pc@:>@])],
+            [AS_HELP_STRING([--with-vender=@<:@pc|eeasytech|arterytek|hdhc@:>@],
+                [select vender about @<:@pc|eeasytech|arterytek|hdhc@:>@ @<:@default=pc@:>@])],
             [],
             [with_vender=pc])
 
@@ -44,8 +45,12 @@ AC_DEFUN([SELECT_VENDER],
                 AC_DEFINE(HAVE_SELECT_VENDER_ARTERYTEK,  1, [select arterytek vender])
                 vender="arterytek"
             ;;
+            hdhc)
+                AC_DEFINE(HAVE_SELECT_VENDER_HDHC,  1, [select hdhc vender])
+                vender="hdhc"
+            ;;
             *)
-                AC_MSG_ERROR([bad value ${with_vender} for --with-vender=@<:@pc|eeasytech|arterytek@:>@])
+                AC_MSG_ERROR([bad value ${with_vender} for --with-vender=@<:@pc|eeasytech|arterytek|hdhc@:>@])
             ;;
         esac
 
@@ -54,5 +59,6 @@ AC_DEFUN([SELECT_VENDER],
         AM_CONDITIONAL([COMPILE_SELECT_VENDER_PC],          [test "x$with_vender" = "xpc"])
         AM_CONDITIONAL([COMPILE_SELECT_VENDER_EEASYTECH],   [test "x$with_vender" = "xeeasytech"])
         AM_CONDITIONAL([COMPILE_SELECT_VENDER_ARTERYTEK],   [test "x$with_vender" = "xarterytek"])
+        AM_CONDITIONAL([COMPILE_SELECT_VENDER_HDHC],        [test "x$with_vender" = "xhdhc"])
     ])
 
