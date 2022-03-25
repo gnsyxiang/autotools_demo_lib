@@ -186,13 +186,15 @@ get_config()
 
     install_path=`sed '/^install_path=/!d;s/.*=//' $_config_file`
 
+    _configure_param=`sed '/^configure_param=/!d;s/configure_param=//' $_config_file`
+
     cppflag="${cppflag} ${_cppflag}"
     cflag="${cflag} ${_cflag}"
     cxxflag="${cxxflag} ${_cxxflag}"
     ldflag="${ldflag} ${_ldflag}"
     lib="${lib} ${_lib}"
 
-    echo ${lib}
+    configure_param="${configure_param} ${_configure_param}"
 }
 
 select_vender
