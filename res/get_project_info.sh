@@ -78,7 +78,7 @@ else
     get_project_name $project_name
 
     echo "### get version num..."
-    project_version=${project_path_right#*-}
+    project_version=${project_path_right##*-}
 
     get_full_version_num $project_version
 fi
