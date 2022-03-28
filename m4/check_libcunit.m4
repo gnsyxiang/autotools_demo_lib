@@ -80,7 +80,7 @@ AC_DEFUN([CHECK_LIBCUNIT], [
                     AC_DEFINE(HAVE_cunit, 1, [Define if the system has cunit])
                 ;;
                 *)
-                    AC_MSG_WARN([cunit is a must but can not be found. You should add the \
+                    AC_MSG_ERROR([cunit is a must but can not be found. You should add the \
 directory containing `cunit.pc' to the `PKG_CONFIG_PATH' environment variable, \
 or set `CPPFLAGS' and `LDFLAGS' directly for cunit, or use `--disable-cunit' \
 to disable support for cunit encryption])
