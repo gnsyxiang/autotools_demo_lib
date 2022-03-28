@@ -29,7 +29,7 @@ select_vender()
             break
         fi
     done
-    if [[ ${_flag} != "true" ]]; then
+    if [[ -z "${usr_select_vender}" || ${_flag} != "true" ]]; then
         echo "error select vender !!!"
         exit
     fi
