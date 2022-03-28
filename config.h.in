@@ -52,6 +52,9 @@
 /* select eeasytech vender */
 #undef HAVE_SELECT_VENDER_EEASYTECH
 
+/* select hdhc vender */
+#undef HAVE_SELECT_VENDER_HDHC
+
 /* select pc vender */
 #undef HAVE_SELECT_VENDER_PC
 
