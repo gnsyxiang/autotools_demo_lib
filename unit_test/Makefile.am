@@ -23,7 +23,7 @@
 # ------------------
 _no_error_com   =
 _define_com     =
-_include_com    =
+_include_com    = $(include_com)
 _sources_com    =
 _cppflags_com   =
 _cflags_com     =
@@ -56,12 +56,9 @@ _cxxflags_com   +=
 
 _ldflags_com    +=
 
-_ldadd_com      += $(top_builddir)/src/lib@project_name@.la
-
-if COMPILE_LIBCUNIT
-_include_com    += $(CUNIT_INCS)
-_ldadd_com      += $(CUNIT_LIBS)
-endif
+_ldadd_com      += \
+                   $(top_builddir)/src/lib@project_name@.la \
+                   $(ldadd_com)
 
 bin_PROGRAMS            += hy_autotools_demo_lib_test
 hy_autotools_demo_lib_test_SOURCES    = $(_sources_com) main.c
