@@ -233,9 +233,9 @@ ${cur_path}/configure                                       \
 
 thread_jobs=`getconf _NPROCESSORS_ONLN 2>/dev/null || echo 1`
 
-if [ x$usr_select_build_version = x"release" ]; then
-    make -j${thread_jobs} && make install-strip
-else
+if [ x$usr_select_build_version = x"debug" ]; then
     make -j${thread_jobs} && make install
+else
+    make -j${thread_jobs} && make install-strip
 fi
 
