@@ -44,5 +44,9 @@ dist-hook:
 		sed -i '/build-script/d' $(top_distdir)/configure.ac; \
 		sed -i '/project_name.pc/a build-script/$(vender)/$(chip)/Makefile' $(top_distdir)/configure.ac; \
 		sed -i '/project_name.pc/a build-script/$(vender)/Makefile' $(top_distdir)/configure.ac; \
-		sed -i '/project_name.pc/a build-script/Makefile' $(top_distdir)/configure.ac
+		sed -i '/project_name.pc/a build-script/Makefile' $(top_distdir)/configure.ac; \
+		\
+		sed -i '/res\/voice/d' $(top_distdir)/configure.ac; \
+		sed -i '/project_name.pc/a res/voice/Makefile' $(top_distdir)/configure.ac; \
+		sed -i '/project_name.pc/a res/voice/$(language)/Makefile' $(top_distdir)/configure.ac
 
