@@ -27,11 +27,10 @@ AC_DEFUN([SELECT_PRODUCT],
         product=""
 
         AC_ARG_WITH([product],
-            [AS_HELP_STRING([
-                --with-product=@<:@HY-pc|HY-6810|HY-8608|HY-8608E|HY-8608EV2|HY-MCU-6606@:>@],
-                [select product about @<:@HY-pc|HY-6810|HY-8608|HY-8608E|HY-8608EV2|HY-MCU-6606@:>@ @<:@default=HY-pc@:>@])],
-            [],
-            [with_product=HY-pc])
+                    [AS_HELP_STRING([--with-product=@<:@HY-pc|HY-6810|HY-8608|HY-8608E|HY-8608EV2|HY-MCU-6606@:>@],
+                                    [select product about @<:@HY-pc|HY-6810|HY-8608|HY-8608E|HY-8608EV2|HY-MCU-6606@:>@ @<:@default=HY-pc@:>@])],
+                    [],
+                    [with_product=HY-pc])
 
         case "$with_product" in
             HY-pc)

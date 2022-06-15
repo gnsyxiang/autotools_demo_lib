@@ -27,10 +27,10 @@ AC_DEFUN([SELECT_VENDER],
         vender=""
 
         AC_ARG_WITH([vender],
-            [AS_HELP_STRING([--with-vender=@<:@pc|fullhan|eeasytech|arterytek|hdhc@:>@],
-                [select vender about @<:@pc|fullhan|eeasytech|arterytek|hdhc@:>@ @<:@default=pc@:>@])],
-            [],
-            [with_vender=pc])
+                    [AS_HELP_STRING([--with-vender=@<:@pc|fullhan|eeasytech|arterytek|hdhc@:>@],
+                                    [select vender about @<:@pc|fullhan|eeasytech|arterytek|hdhc@:>@ @<:@default=pc@:>@])],
+                    [],
+                    [with_vender=pc])
 
         case "$with_vender" in
             pc)
@@ -54,7 +54,7 @@ AC_DEFUN([SELECT_VENDER],
                 vender="hdhc"
             ;;
             *)
-                AC_MSG_ERROR([bad value ${with_vender} for --with-vender=@<:@pc|eeasytech|arterytek|hdhc@:>@])
+                AC_MSG_ERROR([bad value ${with_vender} for --with-vender=@<:@pc|fullhan|eeasytech|arterytek|hdhc@:>@])
             ;;
         esac
 

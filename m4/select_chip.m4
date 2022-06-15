@@ -27,10 +27,10 @@ AC_DEFUN([SELECT_CHIP],
         chip=""
 
         AC_ARG_WITH([chip],
-            [AS_HELP_STRING([--with-chip=@<:@pc-chip|MC6810E|SV823|at32f4xx@:>@],
-                [select chip about @<:@pc-chip|MC6810E|SV823|at32f4xx@:>@ @<:@default=pc-chip@:>@])],
-            [],
-            [with_chip=pc-chip])
+                    [AS_HELP_STRING([--with-chip=@<:@pc-chip|MC6810E|SV823|at32f4xx@:>@],
+                                    [select chip about @<:@pc-chip|MC6810E|SV823|at32f4xx@:>@ @<:@default=pc-chip@:>@])],
+                    [],
+                    [with_chip=pc-chip])
 
         case "$with_chip" in
             pc-chip)
@@ -50,7 +50,7 @@ AC_DEFUN([SELECT_CHIP],
                 chip="at32f4xx"
             ;;
             *)
-                AC_MSG_ERROR([bad value ${with_chip} for --with-chip=@<:@pc-chip|SV823|at32f4xx@:>@])
+                AC_MSG_ERROR([bad value ${with_chip} for --with-chip=@<:@pc-chip|MC6810E|SV823|at32f4xx@:>@])
             ;;
         esac
 
