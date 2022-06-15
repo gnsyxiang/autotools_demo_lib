@@ -85,5 +85,5 @@ autotools_demo_lib.pc
 *.la
 
 example/hy_*_demo
-unit_test/hy_*_test
+test/hy_*_test
 

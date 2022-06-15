@@ -25,9 +25,12 @@ SUBDIRS = \
           src           \
           doc           \
           example       \
-          unit_test     \
           res           \
           build-script
+
+if COMPILE_LIBCUNIT
+SUBDIRS += test
+endif
 
 # ------------------
 # defining variables

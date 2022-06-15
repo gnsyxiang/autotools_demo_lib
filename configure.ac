@@ -76,7 +76,7 @@ AC_CONFIG_FILES([Makefile
                  res/voice/cn/Makefile
                  res/voice/en/Makefile
                  src/Makefile
-                 unit_test/Makefile])
+                 test/Makefile])
 AC_OUTPUT
 
 AC_MSG_RESULT([
