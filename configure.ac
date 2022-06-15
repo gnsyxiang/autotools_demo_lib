@@ -82,6 +82,9 @@ AC_CONFIG_FILES([Makefile
                  example/Makefile
                  include/Makefile
                  res/Makefile
+                 res/voice/Makefile
+                 res/voice/cn/Makefile
+                 res/voice/en/Makefile
                  src/Makefile
                  unit_test/Makefile])
 AC_OUTPUT
