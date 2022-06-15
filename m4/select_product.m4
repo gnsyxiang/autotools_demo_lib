@@ -28,8 +28,8 @@ AC_DEFUN([SELECT_PRODUCT],
 
         AC_ARG_WITH([product],
             [AS_HELP_STRING([
-                --with-product=@<:@HY-pc|HY-8608|HY-8608E|HY-8608EV2|HY-MCU-6606@:>@],
-                [select product about @<:@HY-pc|HY-8608|HY-8608E|HY-8608EV2|HY-MCU-6606@:>@ @<:@default=HY-pc@:>@])],
+                --with-product=@<:@HY-pc|HY-6810|HY-8608|HY-8608E|HY-8608EV2|HY-MCU-6606@:>@],
+                [select product about @<:@HY-pc|HY-6810|HY-8608|HY-8608E|HY-8608EV2|HY-MCU-6606@:>@ @<:@default=HY-pc@:>@])],
             [],
             [with_product=HY-pc])
 
@@ -50,12 +50,16 @@ AC_DEFUN([SELECT_PRODUCT],
                 AC_DEFINE(HAVE_SELECT_PRODUCT_HY_8608EV2,  1, [select HY-8608EV2 product])
                 product="HY-8608EV2"
             ;;
+            HY-6810)
+                AC_DEFINE(HAVE_SELECT_PRODUCT_HY_6810,  1, [select HY-6810 product])
+                product="HY-6810"
+            ;;
             HY-MCU-6606)
                 AC_DEFINE(HAVE_SELECT_PRODUCT_HY_MCU_6606,  1, [select HY-MCU-6606 product])
                 product="HY-MCU-6606"
             ;;
             *)
-                AC_MSG_ERROR([bad value ${with_product} for --with-product=@<:@HY-pc|HY-8608|HY-8608E|HY-8608EV2|HY-MCU-6606@:>@])
+                AC_MSG_ERROR([bad value ${with_product} for --with-product=@<:@HY-pc|HY-6810|HY-8608|HY-8608E|HY-8608EV2|HY-MCU-6606@:>@])
             ;;
         esac
 
@@ -65,6 +69,7 @@ AC_DEFUN([SELECT_PRODUCT],
         AM_CONDITIONAL([COMPILE_SELECT_PRODUCT_HY_8608],        [test "x$with_product" = "xHY-8608"])
         AM_CONDITIONAL([COMPILE_SELECT_PRODUCT_HY_8608E],       [test "x$with_product" = "xHY-8608E"])
         AM_CONDITIONAL([COMPILE_SELECT_PRODUCT_HY_8608EV2],     [test "x$with_product" = "xHY-8608EV2"])
-        AM_CONDITIONAL([COMPILE_SELECT_PRODUCT_HY_MCU_6606],     [test "x$with_product" = "xHY-MCU-6606"])
+        AM_CONDITIONAL([COMPILE_SELECT_PRODUCT_HY_6810],        [test "x$with_product" = "xHY-6810"])
+        AM_CONDITIONAL([COMPILE_SELECT_PRODUCT_HY_MCU_6606],    [test "x$with_product" = "xHY-MCU-6606"])
     ])
 

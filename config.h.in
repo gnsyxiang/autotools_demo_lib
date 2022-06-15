@@ -19,6 +19,9 @@
 /* select at32f4xx chip */
 #undef HAVE_SELECT_CHIP_AT32F4XX
 
+/* select MC6810E chip */
+#undef HAVE_SELECT_CHIP_MC6810E
+
 /* select pc chip */
 #undef HAVE_SELECT_CHIP_PC
 
@@ -30,6 +33,9 @@
 
 /* select en language */
 #undef HAVE_SELECT_LANGUAGE_EN
+
+/* select HY-6810 product */
+#undef HAVE_SELECT_PRODUCT_HY_6810
 
 /* select HY-8608 product */
 #undef HAVE_SELECT_PRODUCT_HY_8608
@@ -51,6 +57,9 @@
 
 /* select eeasytech vender */
 #undef HAVE_SELECT_VENDER_EEASYTECH
+
+/* select fullhan vender */
+#undef HAVE_SELECT_VENDER_FULLHAN
 
 /* select hdhc vender */
 #undef HAVE_SELECT_VENDER_HDHC
