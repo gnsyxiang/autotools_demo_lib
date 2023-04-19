@@ -68,6 +68,8 @@ AC_CONFIG_FILES([Makefile
                  build-script/fullhan/Makefile
                  build-script/pc/Makefile
                  build-script/pc/pc-chip/Makefile
+                 build-script/rock-chips/Makefile
+                 build-script/rock-chips/rk3568/Makefile
                  doc/Makefile
                  example/Makefile
                  include/Makefile

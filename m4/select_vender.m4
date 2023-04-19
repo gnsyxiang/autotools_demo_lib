@@ -27,8 +27,8 @@ AC_DEFUN([SELECT_VENDER],
         vender=""
 
         AC_ARG_WITH([vender],
-                    [AS_HELP_STRING([--with-vender=@<:@pc|fullhan|eeasytech|arterytek|hdhc@:>@],
-                                    [select vender about @<:@pc|fullhan|eeasytech|arterytek|hdhc@:>@ @<:@default=pc@:>@])],
+                    [AS_HELP_STRING([--with-vender=@<:@pc|rock-chips|fullhan|eeasytech|arterytek|hdhc@:>@],
+                                    [select vender about @<:@pc|rock-chips|fullhan|eeasytech|arterytek|hdhc@:>@ @<:@default=pc@:>@])],
                     [],
                     [with_vender=pc])
 
@@ -45,6 +45,10 @@ AC_DEFUN([SELECT_VENDER],
                 AC_DEFINE(HAVE_SELECT_VENDER_FULLHAN,  1, [select fullhan vender])
                 vender="fullhan"
             ;;
+            rock-chips)
+                AC_DEFINE(HAVE_SELECT_VENDER_ROCK_CHIPS,  1, [select rock-chips vender])
+                vender="rock-chips"
+            ;;
             arterytek)
                 AC_DEFINE(HAVE_SELECT_VENDER_ARTERYTEK,  1, [select arterytek vender])
                 vender="arterytek"
@@ -54,7 +58,7 @@ AC_DEFUN([SELECT_VENDER],
                 vender="hdhc"
             ;;
             *)
-                AC_MSG_ERROR([bad value ${with_vender} for --with-vender=@<:@pc|fullhan|eeasytech|arterytek|hdhc@:>@])
+                AC_MSG_ERROR([bad value ${with_vender} for --with-vender=@<:@pc|rock-chips|fullhan|eeasytech|arterytek|hdhc@:>@])
             ;;
         esac
 
@@ -63,6 +67,7 @@ AC_DEFUN([SELECT_VENDER],
         AM_CONDITIONAL([COMPILE_SELECT_VENDER_PC],          [test "x$with_vender" = "xpc"])
         AM_CONDITIONAL([COMPILE_SELECT_VENDER_EEASYTECH],   [test "x$with_vender" = "xeeasytech"])
         AM_CONDITIONAL([COMPILE_SELECT_VENDER_FULLHAN],     [test "x$with_vender" = "xfullhan"])
+        AM_CONDITIONAL([COMPILE_SELECT_VENDER_ROCK_CHIPS],  [test "x$with_vender" = "xrock-chips"])
         AM_CONDITIONAL([COMPILE_SELECT_VENDER_ARTERYTEK],   [test "x$with_vender" = "xarterytek"])
         AM_CONDITIONAL([COMPILE_SELECT_VENDER_HDHC],        [test "x$with_vender" = "xhdhc"])
     ])

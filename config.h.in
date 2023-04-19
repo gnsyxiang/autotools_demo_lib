@@ -25,6 +25,9 @@
 /* select pc chip */
 #undef HAVE_SELECT_CHIP_PC
 
+/* select rk3568 chip */
+#undef HAVE_SELECT_CHIP_RK3568
+
 /* select SV823 chip */
 #undef HAVE_SELECT_CHIP_SV823
 
@@ -48,6 +51,9 @@
 
 /* select pc vender */
 #undef HAVE_SELECT_VENDER_PC
+
+/* select rock-chips vender */
+#undef HAVE_SELECT_VENDER_ROCK_CHIPS
 
 /* Define to 1 if you have the <stdint.h> header file. */
 #undef HAVE_STDINT_H
