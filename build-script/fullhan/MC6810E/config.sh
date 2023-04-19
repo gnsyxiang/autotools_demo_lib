@@ -17,5 +17,5 @@ cxxflag=
 ldflag=-rdynamic
 lib=
 
-install_path=/mnt/data/nfs/fullhan/MC6810E
+install_path=/mnt/nfs/fullhan/MC6810E
 

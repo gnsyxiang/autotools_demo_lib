@@ -17,5 +17,5 @@ cxxflag=
 ldflag=-rdynamic
 lib=
 
-install_path=/mnt/data/nfs/pc/pc-chip
+install_path=/mnt/nfs/pc/pc-chip
 

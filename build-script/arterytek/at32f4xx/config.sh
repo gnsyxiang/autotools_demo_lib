@@ -17,5 +17,5 @@ cxxflag=
 ldflag=-specs=nano.specs -specs=nosys.specs -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard
 lib=
 
-install_path=/mnt/data/nfs/MCU/arterytek/at32f4xx
+install_path=/mnt/nfs/MCU/arterytek/at32f4xx
 
