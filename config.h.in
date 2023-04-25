@@ -22,6 +22,9 @@
 /* select MC6810E chip */
 #undef HAVE_SELECT_CHIP_MC6810E
 
+/* select mx6ull chip */
+#undef HAVE_SELECT_CHIP_MX6ULL
+
 /* select pc chip */
 #undef HAVE_SELECT_CHIP_PC
 
@@ -48,6 +51,9 @@
 
 /* select hdhc vender */
 #undef HAVE_SELECT_VENDER_HDHC
+
+/* select nxp vender */
+#undef HAVE_SELECT_VENDER_NXP
 
 /* select pc vender */
 #undef HAVE_SELECT_VENDER_PC

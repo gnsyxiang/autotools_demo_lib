@@ -66,6 +66,8 @@ AC_CONFIG_FILES([Makefile
                  build-script/eeasytech/SV823/Makefile
                  build-script/fullhan/MC6810E/Makefile
                  build-script/fullhan/Makefile
+                 build-script/nxp/Makefile
+                 build-script/nxp/mx6ull/Makefile
                  build-script/pc/Makefile
                  build-script/pc/pc-chip/Makefile
                  build-script/rock-chips/Makefile
