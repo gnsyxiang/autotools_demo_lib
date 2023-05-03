@@ -43,11 +43,6 @@ ldadd_com           =
 ACLOCAL_AMFLAGS     = -I m4
 include_com         += $(ACLOCAL_AMFLAGS)
 
-if COMPILE_LIBCUNIT
-include_com         += $(CUNIT_INCS)
-ldadd_com           += $(CUNIT_LIBS)
-endif
-
 export include_com
 export ldadd_com 
 

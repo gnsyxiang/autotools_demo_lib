@@ -77,6 +77,7 @@ AC_DEFUN([CHECK_LIBCUNIT], [
 
             case "$have_cunit" in
                 yes)
+                    AC_CHECK_LIB([cunit], [CU_initialize_registry])
                     AC_DEFINE(HAVE_cunit, 1, [Define if the system has cunit])
                 ;;
                 *)
