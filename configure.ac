@@ -72,6 +72,8 @@ AC_CONFIG_FILES([Makefile
                  build-script/pc/pc-chip/Makefile
                  build-script/rock-chips/Makefile
                  build-script/rock-chips/rk3568/Makefile
+                 build-script/stm32/Makefile
+                 build-script/stm32/stm32h743/Makefile
                  doc/Makefile
                  example/Makefile
                  include/Makefile
