@@ -16,6 +16,8 @@ cflag=
 cxxflag=
 ldflag=-rdynamic
 lib=
+debug=-g -O0
+release=-O2 -DNDEBUG
 
 install_path=/mnt/nfs/fullhan/MC6810E
 
