@@ -12,7 +12,7 @@ cross_gcc_path=/opt/toolchains/nxp/mx6ull/gcc-linaro-7.5.0-2019.12-x86_64_arm-li
 configure_param=
 
 cppflag=-fstack-protector-all
-cflag=-Wno-error=unused-value
+cflag=
 cxxflag=
 ldflag=-rdynamic
 lib=

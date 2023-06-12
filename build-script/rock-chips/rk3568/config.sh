@@ -12,7 +12,7 @@ cross_gcc_path=/opt/toolchains/rock-chips/rk3568/gcc-linaro-6.3.1-2017.05-x86_64
 configure_param=
 
 cppflag=-fstack-protector-all
-cflag=-Wno-error=unused-value
+cflag=
 cxxflag=
 ldflag=-rdynamic
 lib=
