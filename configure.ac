@@ -64,6 +64,8 @@ AC_CONFIG_FILES([Makefile
                  build-script/arterytek/at32f4xx/Makefile
                  build-script/eeasytech/Makefile
                  build-script/eeasytech/SV823/Makefile
+                 build-script/esp32/Makefile
+                 build-script/esp32/esp32/Makefile
                  build-script/fullhan/MC6810E/Makefile
                  build-script/fullhan/Makefile
                  build-script/nxp/Makefile
