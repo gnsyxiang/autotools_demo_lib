@@ -154,6 +154,7 @@ get_com_config()
     cppflag="${cppflag} -fdata-sections"
     cppflag="${cppflag} -Wno-error=unused-parameter -Wno-unused-parameter"
     cppflag="${cppflag} -Wno-error=unused-result -Wno-unused-result"
+    cppflag="${cppflag} -Wno-error=unused-variable"
 
     ldflag="${ldflag} -Wl,--gc-sections"
     ldflag="${ldflag} -Wl,--as-needed"
