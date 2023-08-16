@@ -27,8 +27,8 @@ AC_DEFUN([SELECT_CHIP],
         chip=""
 
         AC_ARG_WITH([chip],
-                    [AS_HELP_STRING([--with-chip=@<:@pc-chip|MC6810E|mx6ull|esp32|stm32h743|rk3568|SV823|at32f4xx@:>@],
-                                    [select chip about @<:@pc-chip|MC6810E|mx6ull|esp32|stm32h743|rk3568|SV823|at32f4xx@:>@ @<:@default=pc-chip@:>@])],
+                    [AS_HELP_STRING([--with-chip=@<:@pc-chip|MC6810E|mx6ull|esp32|stm32h7xx|rk3568|SV823|at32f4xx@:>@],
+                                    [select chip about @<:@pc-chip|MC6810E|mx6ull|esp32|stm32h7xx|rk3568|SV823|at32f4xx@:>@ @<:@default=pc-chip@:>@])],
                     [],
                     [with_chip=pc-chip])
 
@@ -49,9 +49,9 @@ AC_DEFUN([SELECT_CHIP],
                 AC_DEFINE(HAVE_SELECT_CHIP_MX6ULL,  1, [select mx6ull chip])
                 chip="mx6ull"
             ;;
-            stm32h743)
-                AC_DEFINE(HAVE_SELECT_CHIP_STM32H743,  1, [select stm32h743 chip])
-                chip="stm32h743"
+            stm32h7xx)
+                AC_DEFINE(HAVE_SELECT_CHIP_STM32H7XX,  1, [select stm32h7xx chip])
+                chip="stm32h7xx"
             ;;
             esp32)
                 AC_DEFINE(HAVE_SELECT_CHIP_ESP32,  1, [select esp32 chip])
@@ -66,7 +66,7 @@ AC_DEFUN([SELECT_CHIP],
                 chip="at32f4xx"
             ;;
             *)
-                AC_MSG_ERROR([bad value ${with_chip} for --with-chip=@<:@pc-chip|MC6810E|mx6ull|esp32|stm32h743|rk3568|SV823|at32f4xx@:>@])
+                AC_MSG_ERROR([bad value ${with_chip} for --with-chip=@<:@pc-chip|MC6810E|mx6ull|esp32|stm32h7xx|rk3568|SV823|at32f4xx@:>@])
             ;;
         esac
 
@@ -76,7 +76,7 @@ AC_DEFUN([SELECT_CHIP],
         AM_CONDITIONAL([COMPILE_SELECT_CHIP_SV823],     [test "x$with_chip" = "xSV823"])
         AM_CONDITIONAL([COMPILE_SELECT_CHIP_RK3568],    [test "x$with_chip" = "xrk3568"])
         AM_CONDITIONAL([COMPILE_SELECT_CHIP_MX6ULL],    [test "x$with_chip" = "xmx6ull"])
-        AM_CONDITIONAL([COMPILE_SELECT_CHIP_STM32H743], [test "x$with_chip" = "xstm32h743"])
+        AM_CONDITIONAL([COMPILE_SELECT_CHIP_STM32H7XX], [test "x$with_chip" = "xstm32h7xx"])
         AM_CONDITIONAL([COMPILE_SELECT_CHIP_ESP32],     [test "x$with_chip" = "xesp32"])
         AM_CONDITIONAL([COMPILE_SELECT_CHIP_MC6810E],   [test "x$with_chip" = "xMC6810E"])
         AM_CONDITIONAL([COMPILE_SELECT_CHIP_AT32F4XX],  [test "x$with_chip" = "xat32f4xx"])
