@@ -23,6 +23,8 @@
 
 int main(int argc, char const* argv[])
 {
+    int ret = HyCalcAdd(4, 5);
+    printf("ret: %d \n", ret);
 
     return 0;
 }
