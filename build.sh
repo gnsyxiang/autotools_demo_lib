@@ -207,6 +207,10 @@ get_config
 
 cur_path=`pwd`
 
+if [ ${#1} -gt 0 ]; then
+    install_path=$1
+fi
+
 cppflag="${cppflag} -I${install_path}/include"
 ldflag="${ldflag} -L${install_path}/lib"
 
