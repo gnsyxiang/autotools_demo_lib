@@ -76,13 +76,25 @@ AC_CONFIG_FILES([Makefile
                  build-script/stm32/stm32h7xx/Makefile
                  doc/Makefile
                  example/Makefile
+                 example/linux/Makefile
+                 example/mcu/Makefile
+                 example/windows/Makefile
                  include/Makefile
+                 include/linux/Makefile
+                 include/mcu/Makefile
+                 include/windows/Makefile
                  res/Makefile
                  res/voice/Makefile
                  res/voice/cn/Makefile
                  res/voice/en/Makefile
                  src/Makefile
-                 test/Makefile])
+                 src/linux/Makefile
+                 src/mcu/Makefile
+                 src/windows/Makefile
+                 test/Makefile
+                 test/linux/Makefile
+                 test/mcu/Makefile
+                 test/windows/Makefile])
 AC_OUTPUT
 
 AC_MSG_RESULT([

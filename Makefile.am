@@ -21,11 +21,11 @@
 include res/doxygen.am
 
 SUBDIRS = \
-          include       \
-          src           \
-          doc           \
-          example       \
-          res           \
+          include \
+          src \
+          doc \
+          example \
+          res \
           build-script
 
 if COMPILE_LIBCUNIT
@@ -55,7 +55,7 @@ export ldadd_com
 # make install files
 # ------------------
 _install_files_com  += \
-                       LICENSE                  \
+                       LICENSE \
                        README.md
 dist_doc_DATA       = $(_install_files_com)
 pkgconfig_DATA      = @project_name@.pc
@@ -64,8 +64,8 @@ pkgconfig_DATA      = @project_name@.pc
 # make dist files
 # ---------------
 _dist_files_com     += \
-                       autogen.sh               \
-                       build.sh                 \
+                       autogen.sh \
+                       build.sh \
                        @project_name@.pc.in
 EXTRA_DIST          = $(_dist_files_com)
 

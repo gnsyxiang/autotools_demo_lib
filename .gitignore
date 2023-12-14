@@ -80,11 +80,12 @@ install/
 doxygen/
 
 autotools_demo_lib.pc
+!autotools_demo_lib.pc.in
 
 *.o
 *.lo
 *.la
 
-example/hy_*_demo
-test/hy_*_test
+hy_*_demo
+hy_*_test
 
