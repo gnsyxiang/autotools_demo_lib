@@ -71,10 +71,13 @@
 │   │       └── Makefile.am
 │   ├── Makefile.am
 │   └── pc
-│       ├── Makefile.am
-│       └── pc-chip
-│           ├── config.sh
-│           └── Makefile.am
+│       ├── Makefile.am
+│       ├── ubuntu-pc
+│       │   ├── config.sh
+│       │   └── Makefile.am
+│       └── windows-pc
+│           ├── config.sh
+│           └── Makefile.am
 ├── build.sh                        # 编译脚本
 ├── config.h.in
 ├── configure.ac
@@ -130,7 +133,7 @@
 ```shell
 #!/usr/bin/env bash
 
-chip=pc-chip                        # 芯片型号
+chip=ubuntu-pc                      # 芯片型号
 
 product=HY-pc                       # 支持产品
 
@@ -165,8 +168,9 @@ support vender:                 # 选择厂商
     fullhan
 please select vender: pc
 support chip:                   # 选择芯片
-    pc-chip
-please select chip: pc-chip
+    ubuntu-pc
+    windows-pc
+please select chip: ubuntu-pc
 support language:               # 选择语言
     cn
     en

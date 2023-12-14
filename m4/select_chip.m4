@@ -27,15 +27,19 @@ AC_DEFUN([SELECT_CHIP],
         chip=""
 
         AC_ARG_WITH([chip],
-                    [AS_HELP_STRING([--with-chip=@<:@pc-chip|MC6810E|mx6ull|esp32|stm32h7xx|rk3568|SV823|at32f4xx@:>@],
-                                    [select chip about @<:@pc-chip|MC6810E|mx6ull|esp32|stm32h7xx|rk3568|SV823|at32f4xx@:>@ @<:@default=pc-chip@:>@])],
+                    [AS_HELP_STRING([--with-chip=@<:@ubuntu-pc|windows-pc|MC6810E|mx6ull|esp32|stm32h7xx|rk3568|SV823|at32f4xx@:>@],
+                                    [select chip about @<:@ubuntu-pc|windows-pc|MC6810E|mx6ull|esp32|stm32h7xx|rk3568|SV823|at32f4xx@:>@ @<:@default=ubuntu-pc@:>@])],
                     [],
-                    [with_chip=pc-chip])
+                    [with_chip=ubuntu-pc])
 
         case "$with_chip" in
-            pc-chip)
-                AC_DEFINE(HAVE_SELECT_CHIP_PC,  1, [select pc chip])
-                chip="pc-chip"
+            ubuntu-pc)
+                AC_DEFINE(HAVE_SELECT_CHIP_UBUNTU_PC,  1, [select ubuntu pc chip])
+                chip="ubuntu-pc"
+            ;;
+            windows-pc)
+                AC_DEFINE(HAVE_SELECT_CHIP_WINDOWS_PC,  1, [select windows pc chip])
+                chip="windows-pc"
             ;;
             SV823)
                 AC_DEFINE(HAVE_SELECT_CHIP_SV823,  1, [select SV823 chip])
@@ -66,13 +70,14 @@ AC_DEFUN([SELECT_CHIP],
                 chip="at32f4xx"
             ;;
             *)
-                AC_MSG_ERROR([bad value ${with_chip} for --with-chip=@<:@pc-chip|MC6810E|mx6ull|esp32|stm32h7xx|rk3568|SV823|at32f4xx@:>@])
+                AC_MSG_ERROR([bad value ${with_chip} for --with-chip=@<:@ubuntu-pc|windows-pc|MC6810E|mx6ull|esp32|stm32h7xx|rk3568|SV823|at32f4xx@:>@])
             ;;
         esac
 
         AC_SUBST(chip)
 
-        AM_CONDITIONAL([COMPILE_SELECT_CHIP_PC],        [test "x$with_chip" = "xpc-chip"])
+        AM_CONDITIONAL([COMPILE_SELECT_CHIP_UBUNTU_PC], [test "x$with_chip" = "xubuntu-pc"])
+        AM_CONDITIONAL([COMPILE_SELECT_CHIP_WINDOWS_PC],[test "x$with_chip" = "xwindows-pc"])
         AM_CONDITIONAL([COMPILE_SELECT_CHIP_SV823],     [test "x$with_chip" = "xSV823"])
         AM_CONDITIONAL([COMPILE_SELECT_CHIP_RK3568],    [test "x$with_chip" = "xrk3568"])
         AM_CONDITIONAL([COMPILE_SELECT_CHIP_MX6ULL],    [test "x$with_chip" = "xmx6ull"])

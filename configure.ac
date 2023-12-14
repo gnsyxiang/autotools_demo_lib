@@ -68,7 +68,8 @@ AC_CONFIG_FILES([Makefile
                  build-script/nxp/Makefile
                  build-script/nxp/mx6ull/Makefile
                  build-script/pc/Makefile
-                 build-script/pc/pc-chip/Makefile
+                 build-script/pc/ubuntu-pc/Makefile
+                 build-script/pc/windows-pc/Makefile
                  build-script/rock-chips/Makefile
                  build-script/rock-chips/rk3568/Makefile
                  build-script/stm32/Makefile
