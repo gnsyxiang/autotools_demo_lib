@@ -831,9 +831,9 @@ WARN_LOGFILE           =
 
 INPUT                  = \
                          $(SRCDIR)/doc \
-                         $(SRCDIR)/example \
-                         $(SRCDIR)/include \
-                         $(SRCDIR)/src \
+                         $(SRCDIR)/example/$(RUN_OS) \
+                         $(SRCDIR)/include/$(RUN_OS) \
+                         $(SRCDIR)/src/$(RUN_OS) \
                          $(SRCDIR)/README.md
 
 # This tag can be used to specify the character encoding of the source files

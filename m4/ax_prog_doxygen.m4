@@ -267,6 +267,7 @@ m4_define([DX_loop], m4_dquote(m4_if(m4_eval(3 < m4_count($@)), 1,
 
 # Environment variables used inside doxygen.cfg:
 DX_ENV_APPEND(SRCDIR, $srcdir)
+DX_ENV_APPEND(RUN_OS, $run_os)
 DX_ENV_APPEND(PROJECT, $DX_PROJECT)
 DX_ENV_APPEND(VERSION, $PACKAGE_VERSION)
 

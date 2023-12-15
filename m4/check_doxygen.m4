@@ -32,7 +32,7 @@ AC_DEFUN([CHECK_DOXYGEN],
         DX_PS_FEATURE(OFF)
         DX_CHM_FEATURE(OFF)
         DX_CHI_FEATURE(OFF)
-        DX_INIT_DOXYGEN([PROJECT_NAME], [${top_srcdir}/res/Doxyfile], [doxygen])
+        DX_INIT_DOXYGEN([PROJECT_NAME], [${top_srcdir}/res/Doxyfile], [doc/doxygen])
 
         if test x"${enable_doxygen_doc}" == x"yes" ; then
             AC_CHECK_PROG([DOXYGEN], [doxygen], [yes])
