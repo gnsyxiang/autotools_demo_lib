@@ -30,6 +30,6 @@ _dist_file_com  =
 # make dist files
 # ---------------
 _dist_file_com  += \
-                   Doxyfile             \
+                   Doxyfile \
                    get_project_info.sh
 EXTRA_DIST      = $(_dist_file_com)

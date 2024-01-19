@@ -42,9 +42,9 @@ AC_PROG_LN_S
 AC_PROG_MAKE_SET
 # AC_PROG_RANLIB
 
-CHECK_LIBCUNIT
-
 # Checks for libraries.
+
+CHECK_LIBCUNIT
 
 # Checks for header files.
 AC_CHECK_HEADERS([stdlib.h])
@@ -57,31 +57,15 @@ AC_FUNC_MALLOC
 AC_CONFIG_FILES([Makefile
                  $project_name.pc
                  build-script/Makefile
-                 build-script/arterytek/Makefile
-                 build-script/arterytek/at32f4xx/Makefile
-                 build-script/eeasytech/Makefile
-                 build-script/eeasytech/SV823/Makefile
-                 build-script/esp32/Makefile
-                 build-script/esp32/esp32/Makefile
-                 build-script/fullhan/MC6810E/Makefile
-                 build-script/fullhan/Makefile
-                 build-script/nxp/Makefile
-                 build-script/nxp/mx6ull/Makefile
                  build-script/pc/Makefile
-                 build-script/pc/ubuntu-pc/Makefile
-                 build-script/pc/windows-pc/Makefile
-                 build-script/rock-chips/Makefile
-                 build-script/rock-chips/rk3568/Makefile
-                 build-script/stm32/Makefile
-                 build-script/stm32/stm32h7xx/Makefile
+                 build-script/pc/ubuntu/Makefile
+                 build-script/pc/windows/Makefile
                  doc/Makefile
                  example/Makefile
                  example/linux/Makefile
-                 example/mcu/Makefile
                  example/windows/Makefile
                  include/Makefile
                  include/linux/Makefile
-                 include/mcu/Makefile
                  include/windows/Makefile
                  res/Makefile
                  res/voice/Makefile
@@ -89,11 +73,9 @@ AC_CONFIG_FILES([Makefile
                  res/voice/en/Makefile
                  src/Makefile
                  src/linux/Makefile
-                 src/mcu/Makefile
                  src/windows/Makefile
                  test/Makefile
                  test/linux/Makefile
-                 test/mcu/Makefile
                  test/windows/Makefile])
 AC_OUTPUT
 
