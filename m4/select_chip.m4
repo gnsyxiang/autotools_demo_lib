@@ -54,7 +54,7 @@ AC_DEFUN([SELECT_CHIP],
         AC_SUBST(chip)
         AC_SUBST(run_os)
 
-        AM_CONDITIONAL([COMPILE_SELECT_CHIP_UBUNTU], [test "x$with_chip" = "xubuntu"])
-        AM_CONDITIONAL([COMPILE_SELECT_CHIP_WINDOWS],[test "x$with_chip" = "xwindows"])
+        AM_CONDITIONAL([COMPILE_SELECT_CHIP_UBUNTU],    [test "x$with_chip" = "xubuntu"])
+        AM_CONDITIONAL([COMPILE_SELECT_CHIP_WINDOWS],   [test "x$with_chip" = "xwindows"])
     ])
 
