@@ -11,12 +11,12 @@ cross_gcc_path=
 
 configure_param=
 
-cppflag=-fstack-protector-all
+cppflag=
 cflag=
 cxxflag=
 ldflag=-rdynamic
 lib=
-debug=-g -O0
+debug=-ggdb -g -O0 -fstack-protector-all
 release=-O2 -DNDEBUG
 
 install_path=/mnt/nfs/pc/ubuntu

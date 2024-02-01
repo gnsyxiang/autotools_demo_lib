@@ -148,10 +148,12 @@ select_build_version()
 
 get_com_config()
 {
+    cppflag="${cppflag} -D_GNU_SOURCE"
     cppflag="${cppflag} -pipe"
-    cppflag="${cppflag} -W -Wall -Werror"
+    cppflag="${cppflag} -W -Wall -Werror=all"
     cppflag="${cppflag} -ffunction-sections"
     cppflag="${cppflag} -fdata-sections"
+    cppflag="${cppflag} -fstrict-volatile-bitfields"
     cppflag="${cppflag} -Wno-error=unused-parameter -Wno-unused-parameter"
     cppflag="${cppflag} -Wno-error=unused-result -Wno-unused-result"
     cppflag="${cppflag} -Wno-error=unused-variable"
