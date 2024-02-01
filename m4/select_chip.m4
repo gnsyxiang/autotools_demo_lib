@@ -28,8 +28,8 @@ AC_DEFUN([SELECT_CHIP],
         run_os=""
 
         AC_ARG_WITH([chip],
-                    [AS_HELP_STRING([--with-chip=@<:@ubuntu|windows@:>@],
-                                    [select chip about @<:@ubuntu|windows@:>@ @<:@default=ubuntu@:>@])],
+                    [AS_HELP_STRING([--with-chip=@<:@ubuntu|windows|rk3568|esp32@:>@],
+                                    [select chip about @<:@ubuntu|windows|rk3568|esp32@:>@ @<:@default=ubuntu@:>@])],
                     [],
                     [with_chip=ubuntu])
 
@@ -46,8 +46,20 @@ AC_DEFUN([SELECT_CHIP],
                 chip="windows"
                 run_os="windows"
             ;;
+            rk3568)
+                AC_DEFINE(HAVE_SELECT_CHIP_RK3568,  1, [select rk3568 chip])
+                AC_DEFINE(HAVE_SELECT_OS_LINUX,  1, [select linux os])
+                chip="rk3568"
+                run_os="linux"
+            ;;
+            esp32)
+                AC_DEFINE(HAVE_SELECT_CHIP_ESP32,  1, [select esp32 chip])
+                AC_DEFINE(HAVE_SELECT_OS_FREERTOS,  1, [select freertos os])
+                chip="esp32"
+                run_os="freertos"
+            ;;
             *)
-                AC_MSG_ERROR([bad value ${with_chip} for --with-chip=@<:@ubuntu|windows@:>@])
+                AC_MSG_ERROR([bad value ${with_chip} for --with-chip=@<:@ubuntu|windows|rk3568|esp32@:>@])
             ;;
         esac
 
@@ -56,5 +68,7 @@ AC_DEFUN([SELECT_CHIP],
 
         AM_CONDITIONAL([COMPILE_SELECT_CHIP_UBUNTU],    [test "x$with_chip" = "xubuntu"])
         AM_CONDITIONAL([COMPILE_SELECT_CHIP_WINDOWS],   [test "x$with_chip" = "xwindows"])
+        AM_CONDITIONAL([COMPILE_SELECT_CHIP_RK3568],    [test "x$with_chip" = "xrk3568"])
+        AM_CONDITIONAL([COMPILE_SELECT_CHIP_ESP32],     [test "x$with_chip" = "xesp32"])
     ])
 

@@ -18,7 +18,7 @@
 #     last modified: 14/12 2023 16:49
 # ===============================================================
 
-lib_LTLIBRARIES = lib@project_name@.la
+noinst_LTLIBRARIES = lib@project_name@_@run_os@.la
 
 # ------------------
 # defining variables
@@ -57,17 +57,11 @@ _cflags_com     +=
 
 _cxxflags_com   +=
 
-_ldflags_com    += -version-info @current@:@revision@:@age@
-
-if !COMPILE_DEBUG_INFO
-_ldflags_com    += -export-symbols-regex 'Hy*'
-endif
-
 _ldadd_com      += $(ldadd_com)
 
-lib@project_name@_la_SOURCES    = $(_sources_com)
-lib@project_name@_la_CPPFLAGS   = $(_cppflags_com)
-lib@project_name@_la_CFLAGS     = $(_cflags_com)
-lib@project_name@_la_CXXFLAGS   = $(_cxxflags_com)
-lib@project_name@_la_LDFLAGS    = $(_ldflags_com)
-lib@project_name@_la_LIBADD     = $(_ldadd_com)
+lib@project_name@_@run_os@_la_SOURCES    = $(_sources_com)
+lib@project_name@_@run_os@_la_CPPFLAGS   = $(_cppflags_com)
+lib@project_name@_@run_os@_la_CFLAGS     = $(_cflags_com)
+lib@project_name@_@run_os@_la_CXXFLAGS   = $(_cxxflags_com)
+lib@project_name@_@run_os@_la_LDFLAGS    = $(_ldflags_com)
+lib@project_name@_@run_os@_la_LIBADD     = $(_ldadd_com)
