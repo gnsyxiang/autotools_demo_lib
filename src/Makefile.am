@@ -61,7 +61,7 @@ if !COMPILE_DEBUG_INFO
 _ldflags_com    += -export-symbols-regex 'Hy*'
 endif
 
-_ldadd_com      += $(top_builddir)/src/$(run_os)/lib@project_name@_@run_os@.la
+_ldadd_com      += $(top_builddir)/src/$(run_os)/lib$(project_name)_$(run_os).la
 
 _ldadd_com      += $(ldadd_com)
 
