@@ -64,14 +64,22 @@ AC_CONFIG_FILES([Makefile
                  build-script/pc/windows/Makefile
                  build-script/rock-chips/Makefile
                  build-script/rock-chips/rk3568/Makefile
+                 build-script/stm32/Makefile
+                 build-script/stm32/stm32h7xx/Makefile
                  doc/Makefile
                  example/Makefile
                  example/freertos/Makefile
                  example/linux/Makefile
+                 example/mcu/Makefile
+                 example/mcu/stm32/Makefile
+                 example/mcu/stm32/stm32h7xx/Makefile
                  example/windows/Makefile
                  include/Makefile
                  include/freertos/Makefile
                  include/linux/Makefile
+                 include/mcu/Makefile
+                 include/mcu/stm32/Makefile
+                 include/mcu/stm32/stm32h7xx/Makefile
                  include/windows/Makefile
                  res/Makefile
                  res/voice/Makefile
@@ -80,10 +88,16 @@ AC_CONFIG_FILES([Makefile
                  src/Makefile
                  src/freertos/Makefile
                  src/linux/Makefile
+                 src/mcu/Makefile
+                 src/mcu/stm32/Makefile
+                 src/mcu/stm32/stm32h7xx/Makefile
                  src/windows/Makefile
                  test/Makefile
                  test/freertos/Makefile
                  test/linux/Makefile
+                 test/mcu/Makefile
+                 test/mcu/stm32/Makefile
+                 test/mcu/stm32/stm32h7xx/Makefile
                  test/windows/Makefile])
 AC_OUTPUT
 

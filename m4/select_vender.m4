@@ -27,8 +27,8 @@ AC_DEFUN([SELECT_VENDER],
         vender=""
 
         AC_ARG_WITH([vender],
-                    [AS_HELP_STRING([--with-vender=@<:@pc|rock-chips|esp32@:>@],
-                                    [select vender about @<:@pc|rock-chips|esp32@:>@ @<:@default=pc@:>@])],
+                    [AS_HELP_STRING([--with-vender=@<:@pc|rock-chips|esp32|stm32@:>@],
+                                    [select vender about @<:@pc|rock-chips|esp32|stm32@:>@ @<:@default=pc@:>@])],
                     [],
                     [with_vender=pc])
 
@@ -45,8 +45,12 @@ AC_DEFUN([SELECT_VENDER],
                 AC_DEFINE(HAVE_SELECT_VENDER_ESP32,  1, [select esp32 vender])
                 vender="esp32"
             ;;
+            stm32)
+                AC_DEFINE(HAVE_SELECT_VENDER_STM32,  1, [select stm32 vender])
+                vender="stm32"
+            ;;
             *)
-                AC_MSG_ERROR([bad value ${with_vender} for --with-vender=@<:@pc|rock-chips|esp32@:>@])
+                AC_MSG_ERROR([bad value ${with_vender} for --with-vender=@<:@pc|rock-chips|esp32|stm32@:>@])
             ;;
         esac
 
@@ -55,4 +59,5 @@ AC_DEFUN([SELECT_VENDER],
         AM_CONDITIONAL([COMPILE_SELECT_VENDER_PC],          [test "x$with_vender" = "xpc"])
         AM_CONDITIONAL([COMPILE_SELECT_VENDER_ROCK_CHIPS],  [test "x$with_vender" = "xrock-chips"])
         AM_CONDITIONAL([COMPILE_SELECT_VENDER_ESP32],       [test "x$with_vender" = "xesp32"])
+        AM_CONDITIONAL([COMPILE_SELECT_VENDER_STM32],       [test "x$with_vender" = "xstm32"])
     ])
