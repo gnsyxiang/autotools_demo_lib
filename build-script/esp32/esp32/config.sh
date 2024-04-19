@@ -2,6 +2,8 @@
 
 chip=esp32
 
+os=freertos
+
 product=
 
 language=cn en

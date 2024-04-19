@@ -2,6 +2,8 @@
 
 chip=stm32h7xx
 
+os=freertos
+
 product=stm32
 
 language=cn en

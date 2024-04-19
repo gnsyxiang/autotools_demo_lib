@@ -2,6 +2,8 @@
 
 chip=ubuntu
 
+os=linux
+
 product=HY-pc
 
 language=cn en

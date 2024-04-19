@@ -66,6 +66,34 @@ select_chip()
     configure_param="${configure_param} --with-chip=${usr_select_chip}"
 }
 
+select_os()
+{
+    echo "support os: "
+    _product_file=./build-script/${usr_select_vender}/${usr_select_chip}/config.sh
+
+    _os=$(sed '/^os=/!d;s/.*=//' "$_product_file")
+
+    format_str_array_output "${_os}"
+
+    echo -n "please select os: "
+    read -r usr_select_os
+
+    _flag="false"
+    _os_array=(`echo "${_os}"`)
+    for i in "${_os_array[@]}"; do
+        if [[ $i = "${usr_select_os}" ]]; then
+            _flag="true"
+            break
+        fi
+    done
+    if [[ ${_flag} != "true" ]]; then
+        echo "error select os !!!"
+        exit
+    fi
+
+    configure_param="${configure_param} --with-os=${usr_select_os}"
+}
+
 select_product()
 {
     echo "support product: "
@@ -232,6 +260,7 @@ get_config()
 
 select_vender
 select_chip
+select_os
 # select_product
 select_language
 select_build_version

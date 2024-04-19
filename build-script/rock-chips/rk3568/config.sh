@@ -2,6 +2,8 @@
 
 chip=rk3568
 
+os=linux
+
 product=rock-chips
 
 language=cn en

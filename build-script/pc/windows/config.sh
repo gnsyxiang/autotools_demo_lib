@@ -2,6 +2,8 @@
 
 chip=windows
 
+os=windows
+
 product=HY-pc
 
 language=cn en
