@@ -51,6 +51,7 @@ m4/ltversion.m4
 aclocal.m4
 
 configure
+configure~
 config.h.in~
 
 *.in
