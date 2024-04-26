@@ -218,6 +218,7 @@ get_com_config()
     cppflag="${cppflag} -Wno-error=unused-parameter -Wno-unused-parameter"
     cppflag="${cppflag} -Wno-error=unused-result -Wno-unused-result"
     cppflag="${cppflag} -Wno-error=unused-variable"
+    cppflag="${cppflag} -Wno-error=unused-function"
 
     ldflag="${ldflag} -Wl,-rpath=../lib"
 }

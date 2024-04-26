@@ -13,7 +13,7 @@ cross_gcc_path=
 
 configure_param=
 
-cppflag=
+cppflag=-Wno-error=stringop-truncation -Wno-error=format-overflow=
 cflag=
 cxxflag=
 ldflag=-rdynamic
