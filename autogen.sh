@@ -8,9 +8,9 @@ BUILD_AUX_DIR=${TOP_DIR}/res
 # generate version number
 generate_version_num()
 {
-    cd ${BUILD_AUX_DIR}
+    cd ${BUILD_AUX_DIR} || exit
     ./get_project_info.sh
-    cd -  >/dev/null 2>&1
+    cd -  >/dev/null 2>&1 || exit
 }
 
 # use autotools to configure

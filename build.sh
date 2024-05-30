@@ -4,8 +4,7 @@
 
 format_str_array_output()
 {
-    _out_put_array=(`echo "${1}"`)
-    for i in "${_out_put_array[@]}"; do
+    for i in $1; do
         echo "    $i"
     done
 }
@@ -13,7 +12,13 @@ format_str_array_output()
 select_vender()
 {
     echo "support vender: "
-    for i in `find ./build-script/ -maxdepth 1 -type d`; do
+
+    local _array
+    local _vender
+    local _flag="false"
+
+    _array=$(find ./build-script/ -maxdepth 1 -type d)
+    for i in ${_array}; do
         _vender="${_vender} ${i##*/}"
     done
 
@@ -22,8 +27,7 @@ select_vender()
     echo -n "please select vender: "
     read -r usr_select_vender
 
-    _flag="false"
-    for i in `find ./build-script/ -maxdepth 1 -type d`; do
+    for i in ${_array}; do
         if [[ ${i##*/} = "${usr_select_vender}" ]]; then
             _flag="true"
             break
@@ -40,7 +44,14 @@ select_vender()
 select_chip()
 {
     echo "support chip: "
-    for i in `find ./build-script/"${usr_select_vender}" -name "config.sh"`; do
+
+    local _array
+    local _chip
+    local _flag="false"
+
+    _array=$(find ./build-script/"${usr_select_vender}" -name "config.sh")
+
+    for i in ${_array}; do
         _chip=$(sed '/^chip=/!d;s/.*=//' "$i")
         chip="${chip} ${_chip}"
     done
@@ -50,8 +61,7 @@ select_chip()
     echo -n "please select chip: "
     read -r usr_select_chip
 
-    _flag="false"
-    for i in `find ./build-script/"${usr_select_vender}" -name "config.sh"`; do
+    for i in ${_array}; do
         _chip=$(sed '/^chip=/!d;s/.*=//' "$i")
         if [[ ${_chip} = "${usr_select_chip}" ]]; then
             _flag="true"
@@ -69,6 +79,11 @@ select_chip()
 select_os()
 {
     echo "support os: "
+
+    local _product_file
+    local _os
+    local _flag="false"
+
     _product_file=./build-script/${usr_select_vender}/${usr_select_chip}/config.sh
 
     _os=$(sed '/^os=/!d;s/.*=//' "$_product_file")
@@ -78,9 +93,7 @@ select_os()
     echo -n "please select os: "
     read -r usr_select_os
 
-    _flag="false"
-    _os_array=(`echo "${_os}"`)
-    for i in "${_os_array[@]}"; do
+    for i in ${_os}; do
         if [[ $i = "${usr_select_os}" ]]; then
             _flag="true"
             break
@@ -97,6 +110,11 @@ select_os()
 select_product()
 {
     echo "support product: "
+
+    local _product_file
+    local _product
+    local _flag="false"
+
     _product_file=./build-script/${usr_select_vender}/${usr_select_chip}/config.sh
 
     _product=$(sed '/^product=/!d;s/.*=//' "$_product_file")
@@ -106,9 +124,7 @@ select_product()
     echo -n "please select product: "
     read -r usr_select_product
 
-    _flag="false"
-    _product_array=(`echo "${_product}"`)
-    for i in "${_product_array[@]}"; do
+    for i in ${_product}; do
         if [[ $i = "${usr_select_product}" ]]; then
             _flag="true"
             break
@@ -125,6 +141,11 @@ select_product()
 select_language()
 {
     echo "support language: "
+
+    local _product_file
+    local _language
+    local _flag="false"
+
     _product_file=./build-script/${usr_select_vender}/${usr_select_chip}/config.sh
 
     _language=$(sed '/^language=/!d;s/.*=//' "$_product_file")
@@ -134,9 +155,7 @@ select_language()
     echo -n "please select language: "
     read -r usr_select_language
 
-    _flag="false"
-    _language_array=(`echo "${_language}"`)
-    for i in "${_language_array[@]}"; do
+    for i in ${_language}; do
         if [[ $i = "${usr_select_language}" ]]; then
             _flag="true"
             break
@@ -153,16 +172,16 @@ select_language()
 select_build_version()
 {
     echo "support build version: "
-    _build_version="release debug"
+
+    local _build_version="release debug"
+    local _flag="false"
 
     format_str_array_output "${_build_version}"
 
     echo -n "please select build version: "
     read -r usr_select_build_version
 
-    _flag="false"
-    _product_array=(`echo "${_build_version}"`)
-    for i in "${_product_array[@]}"; do
+    for i in ${_build_version}; do
         if [[ $i = "${usr_select_build_version}" ]]; then
             _flag="true"
             break
@@ -228,7 +247,6 @@ get_config()
     _config_file=./build-script/${usr_select_vender}/${usr_select_chip}/config.sh
 
     host=$(sed '/^host=/!d;s/.*=//' "$_config_file")
-    gcc_version=$(sed '/^gcc_version=/!d;s/.*=//' "$_config_file")
     cross_gcc_path=$(sed '/^cross_gcc_path=/!d;s/.*=//' "$_config_file")
 
     _cppflag=$(sed '/^cppflag=/!d;s/cppflag=//' "$_config_file")
@@ -297,6 +315,10 @@ export STRIP=${cross_gcc_path}strip
     --target="${host}"                                      \
     \
     ${configure_param}
+
+if [ $? -ne 0 ]; then
+    exit
+fi
 
 thread_jobs=$(getconf _NPROCESSORS_ONLN 2>/dev/null || echo 1)
 
