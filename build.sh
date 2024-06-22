@@ -25,7 +25,9 @@ select_vender()
     format_str_array_output "${_vender}"
 
     echo -n "please select vender: "
+    echo -n -e "\e[32m"
     read -r usr_select_vender
+    echo -n -e "\e[0m"
 
     for i in ${_array}; do
         if [[ ${i##*/} = "${usr_select_vender}" ]]; then
@@ -59,7 +61,9 @@ select_chip()
     format_str_array_output "${chip}"
 
     echo -n "please select chip: "
+    echo -n -e "\e[32m"
     read -r usr_select_chip
+    echo -n -e "\e[0m"
 
     for i in ${_array}; do
         _chip=$(sed '/^chip=/!d;s/.*=//' "$i")
@@ -91,7 +95,9 @@ select_os()
     format_str_array_output "${_os}"
 
     echo -n "please select os: "
+    echo -n -e "\e[32m"
     read -r usr_select_os
+    echo -n -e "\e[0m"
 
     for i in ${_os}; do
         if [[ $i = "${usr_select_os}" ]]; then
@@ -122,7 +128,9 @@ select_product()
     format_str_array_output "${_product}"
 
     echo -n "please select product: "
+    echo -n -e "\e[32m"
     read -r usr_select_product
+    echo -n -e "\e[0m"
 
     for i in ${_product}; do
         if [[ $i = "${usr_select_product}" ]]; then
@@ -153,7 +161,9 @@ select_language()
     format_str_array_output "${_language}"
 
     echo -n "please select language: "
+    echo -n -e "\e[32m"
     read -r usr_select_language
+    echo -n -e "\e[0m"
 
     for i in ${_language}; do
         if [[ $i = "${usr_select_language}" ]]; then
@@ -179,7 +189,9 @@ select_build_version()
     format_str_array_output "${_build_version}"
 
     echo -n "please select build version: "
+    echo -n -e "\e[32m"
     read -r usr_select_build_version
+    echo -n -e "\e[0m"
 
     for i in ${_build_version}; do
         if [[ $i = "${usr_select_build_version}" ]]; then
