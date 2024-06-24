@@ -48,7 +48,7 @@ AC_DEFUN([SELECT_OS],
 
         AC_SUBST(run_os)
 
-        AM_CONDITIONAL([COMPILE_SELECT_OS_LINUX],      [test "x$with_os" = "xlinux"])
+        AM_CONDITIONAL([COMPILE_SELECT_OS_LINUX],       [test "x$with_os" = "xlinux"])
         AM_CONDITIONAL([COMPILE_SELECT_OS_WINDOWS],     [test "x$with_os" = "xwindows"])
         AM_CONDITIONAL([COMPILE_SELECT_OS_FREERTOS],    [test "x$with_os" = "xfreertos"])
     ])
