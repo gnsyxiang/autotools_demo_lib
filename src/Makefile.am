@@ -57,7 +57,9 @@ _cxxflags_com   +=
 
 _ldflags_com    += -version-info @current@:@revision@:@age@
 
-if !COMPILE_DEBUG_INFO
+if COMPILE_DEBUG_INFO
+_ldflags_com    += -Wl,-Map,@project_name@.map
+else
 _ldflags_com    += -export-symbols-regex 'Hy*'
 endif
 

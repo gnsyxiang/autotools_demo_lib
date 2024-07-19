@@ -86,6 +86,7 @@ autotools_demo_lib.pc
 *.o
 *.lo
 *.la
+*.map
 
 hy_*_demo
 hy_*_test
