@@ -252,6 +252,11 @@ get_com_config()
     cppflag="${cppflag} -Wno-error=unused-function"
 
     ldflag="${ldflag} -Wl,-rpath=../lib"
+
+    # -rdynamic的作用是:
+    # 1, 导出符号: 将所有符号（包括那些由动态加载函数使用的符号）导出到动态符号表中
+    # 2，允许符号在动态加载时可见：当你在使用动态加载库时（比如dlopen），动态加载的代码可以看到这些符号，从而能正确链接和使用他们
+    # ldflag="${ldflag} -rdynamic"
 }
 
 get_config()
