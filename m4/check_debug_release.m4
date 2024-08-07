@@ -31,7 +31,6 @@ AC_DEFUN([CHECK_DEBUG_RELEASE],
                 AC_MSG_NOTICE([build debug])
             ;;
             no)
-                AC_DEFINE(HAVE_ENABLE_DEBUG_INFO,  1, [enable debug info])
                 AC_MSG_NOTICE([build release])
             ;;
             *)
