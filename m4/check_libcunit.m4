@@ -24,9 +24,7 @@ dnl ===============================================================
 
 AC_DEFUN([CHECK_LIBCUNIT], [
 
-    AC_ARG_ENABLE([cunit],
-        [AS_HELP_STRING([--disable-cunit], [disable support for cunit])],
-            [], [enable_cunit=yes])
+    AC_ARG_ENABLE([cunit], [AS_HELP_STRING([--disable-cunit], [disable support for cunit])], [], [enable_cunit=yes])
 
     case "$enable_cunit" in
         yes)
@@ -58,11 +56,7 @@ AC_DEFUN([CHECK_LIBCUNIT], [
 
                     # clear cache
                     unset ac_cv_search_CU_initialize_registry
-                    AC_SEARCH_LIBS([CU_initialize_registry], [cunit],
-                            [have_cunit=yes
-                                CUNIT_LIBS="$LIBS"],
-                            [have_cunit=no],
-                            [])
+                    AC_SEARCH_LIBS([CU_initialize_registry], [cunit], [have_cunit=yes CUNIT_LIBS="$LIBS"], [have_cunit=no], [])
                     LIBS="$save_LIBS"
                 ;;
             esac
@@ -77,7 +71,7 @@ AC_DEFUN([CHECK_LIBCUNIT], [
 
             case "$have_cunit" in
                 yes)
-                    AC_CHECK_LIB([cunit], [CU_initialize_registry])
+                    AC_CHECK_LIB([cunit], [CU_initialize_registry], [], [AC_MSG_ERROR([cannot find function CU_initialize_registry in cunit library.])])
                     AC_DEFINE(HAVE_cunit, 1, [Define if the system has cunit])
                 ;;
                 *)
